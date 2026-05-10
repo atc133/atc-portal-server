@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prestige Properties — Premium Real Estate</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#050e1f;--dark:#0a1628;--blue:#1a3a5c;--gold:#C6A96B;--white:#f0eff5;--text:#a8b4c8;--border:rgba(198,169,107,0.15);}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--navy);color:var(--white);font-family:'Outfit',sans-serif;}
+nav{position:fixed;top:0;width:100%;z-index:100;padding:1rem 3rem;display:flex;align-items:center;justify-content:space-between;background:rgba(5,14,31,0.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
+.nav-brand{display:flex;align-items:center;gap:0.8rem;}
+.nav-brand-icon{width:36px;height:36px;border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;font-family:'Libre Baskerville',serif;font-size:1rem;color:var(--gold);}
+.nav-brand-name{font-family:'Libre Baskerville',serif;font-size:1.1rem;color:var(--white);}
+.nav-brand-sub{font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--text);display:block;}
+.nav-links{display:flex;gap:2rem;}
+.nav-links a{font-size:0.82rem;color:var(--text);text-decoration:none;letter-spacing:0.05em;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold);}
+.nav-cta{background:var(--gold);color:var(--navy);padding:0.6rem 1.4rem;font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;border:none;cursor:pointer;font-family:'Outfit',sans-serif;transition:all 0.2s;}
+.nav-cta:hover{background:#d4b97a;}
+
+.hero{min-height:100vh;background:linear-gradient(to right, rgba(5,14,31,0.95) 45%, rgba(5,14,31,0.4)),url('https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1600&q=80') center/cover;display:flex;align-items:center;padding:8rem 3rem 4rem;}
+.hero-content{max-width:600px;}
+.hero-eyebrow{font-size:0.68rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;}
+.hero h1{font-family:'Libre Baskerville',serif;font-size:clamp(2.8rem,5vw,4.5rem);font-weight:700;line-height:1.1;margin-bottom:1.5rem;}
+.hero h1 span{color:var(--gold);}
+.hero p{font-size:1rem;color:var(--text);line-height:1.8;margin-bottom:2.5rem;max-width:480px;}
+.hero-stats{display:flex;gap:3rem;margin-bottom:3rem;}
+.stat-val{font-family:'Libre Baskerville',serif;font-size:2rem;color:var(--gold);}
+.stat-label{font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text);margin-top:0.2rem;}
+.btn-gold{background:var(--gold);color:var(--navy);padding:1rem 2.5rem;font-size:0.82rem;letter-spacing:0.15em;text-transform:uppercase;font-weight:600;border:none;cursor:pointer;font-family:'Outfit',sans-serif;transition:all 0.2s;display:inline-block;}
+.btn-gold:hover{background:#d4b97a;transform:translateY(-2px);}
+.btn-ghost{background:transparent;color:var(--white);padding:1rem 2rem;font-size:0.82rem;letter-spacing:0.12em;text-transform:uppercase;border:1px solid rgba(240,239,245,0.25);cursor:pointer;font-family:'Outfit',sans-serif;transition:all 0.2s;margin-left:1rem;}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold);}
+
+/* SEARCH BAR */
+.search-bar{background:var(--dark);border:1px solid var(--border);border-top:2px solid var(--gold);padding:2rem 3rem;max-width:1200px;margin:-1px auto 0;display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:1.5rem;align-items:end;}
+.search-field{display:flex;flex-direction:column;gap:0.4rem;}
+.search-field label{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);}
+.search-field select,.search-field input{background:rgba(255,255,255,0.05);border:1px solid var(--border);color:var(--white);padding:0.75rem 1rem;font-family:'Outfit',sans-serif;font-size:0.9rem;outline:none;transition:border-color 0.2s;}
+.search-field select:focus,.search-field input:focus{border-color:var(--gold);}
+.search-field select option{background:var(--dark);}
+.search-submit{background:var(--gold);color:var(--navy);padding:0.75rem 2rem;font-size:0.8rem;letter-spacing:0.15em;text-transform:uppercase;font-weight:600;border:none;cursor:pointer;font-family:'Outfit',sans-serif;white-space:nowrap;}
+
+/* PROPERTIES */
+section{padding:5rem 3rem;max-width:1200px;margin:0 auto;}
+.sec-label{font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:0.8rem;}
+.sec-title{font-family:'Libre Baskerville',serif;font-size:clamp(2rem,3.5vw,3rem);margin-bottom:0.5rem;}
+.sec-sub{color:var(--text);font-size:0.9rem;margin-bottom:3rem;}
+
+.props-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.prop-card{background:var(--dark);border:1px solid var(--border);overflow:hidden;transition:all 0.3s;}
+.prop-card:hover{border-color:rgba(198,169,107,0.4);transform:translateY(-4px);}
+.prop-img{height:220px;overflow:hidden;position:relative;}
+.prop-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s;}
+.prop-card:hover .prop-img img{transform:scale(1.06);}
+.prop-tag{position:absolute;top:1rem;left:1rem;background:var(--gold);color:var(--navy);font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;font-weight:600;padding:0.3rem 0.8rem;}
+.prop-price{position:absolute;bottom:1rem;right:1rem;background:rgba(5,14,31,0.9);color:var(--gold);font-family:'Libre Baskerville',serif;font-size:1.1rem;padding:0.4rem 0.8rem;border:1px solid var(--border);}
+.prop-body{padding:1.3rem 1.5rem;}
+.prop-title{font-family:'Libre Baskerville',serif;font-size:1.1rem;margin-bottom:0.3rem;}
+.prop-loc{font-size:0.8rem;color:var(--text);display:flex;align-items:center;gap:0.3rem;margin-bottom:1rem;}
+.prop-loc svg{color:var(--gold);}
+.prop-specs{display:flex;gap:1.5rem;border-top:1px solid var(--border);padding-top:1rem;}
+.prop-spec{font-size:0.8rem;color:var(--text);}
+.prop-spec strong{display:block;color:var(--white);font-size:0.9rem;}
+
+/* FORM */
+.contact-section{background:var(--dark);padding:5rem 0;border-top:1px solid var(--border);}
+.contact-inner{max-width:800px;margin:0 auto;padding:0 3rem;}
+.form-2col{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem;}
+.form-full2{grid-column:span 2;}
+.fg{display:flex;flex-direction:column;gap:0.4rem;}
+.fg label{font-size:0.68rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);}
+.fg input,.fg select,.fg textarea{background:rgba(255,255,255,0.04);border:1px solid var(--border);color:var(--white);padding:0.8rem 1rem;font-family:'Outfit',sans-serif;font-size:0.9rem;outline:none;transition:border-color 0.2s;}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--gold);}
+.fg select option{background:var(--dark);}
+.fg textarea{resize:vertical;min-height:120px;}
+.form-submit{width:100%;background:var(--gold);color:var(--navy);padding:1.1rem;font-size:0.82rem;letter-spacing:0.2em;text-transform:uppercase;font-weight:700;border:none;cursor:pointer;margin-top:1rem;font-family:'Outfit',sans-serif;transition:all 0.2s;}
+.form-submit:hover{background:#d4b97a;}
+
+/* AGENT */
+.agents-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:2.5rem;}
+.agent-card{background:var(--dark);border:1px solid var(--border);padding:2rem;text-align:center;}
+.agent-img{width:80px;height:80px;border-radius:50%;object-fit:cover;border:2px solid var(--gold);margin:0 auto 1rem;}
+.agent-name{font-family:'Libre Baskerville',serif;font-size:1.1rem;margin-bottom:0.3rem;}
+.agent-title{font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:0.8rem;}
+.agent-contact{font-size:0.82rem;color:var(--text);}
+
+/* LOCATION */
+.loc-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;margin-top:2rem;}
+.loc-info p{font-size:0.9rem;color:var(--text);line-height:1.8;margin-bottom:0.5rem;}
+.loc-info strong{color:var(--white);}
+.map-wrap{border:1px solid var(--border);overflow:hidden;}
+.map-wrap iframe{width:100%;height:300px;border:none;filter:grayscale(70%) contrast(1.1);}
+
+footer{background:#020810;padding:3rem;text-align:center;border-top:1px solid var(--border);}
+footer p{font-size:0.8rem;color:var(--text);opacity:0.45;}
+footer .brand{font-family:'Libre Baskerville',serif;font-size:1.3rem;color:var(--gold);margin-bottom:0.8rem;}
+
+@media(max-width:768px){nav{padding:1rem 1.2rem;}.nav-links{display:none;}section{padding:3.5rem 1.2rem;}.props-grid,.form-2col,.agents-grid,.loc-grid{grid-template-columns:1fr;}.form-full2{grid-column:span 1;}.search-bar{grid-template-columns:1fr;}.hero{padding:7rem 1.2rem 3rem;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">
+    <div class="nav-brand-icon">P</div>
+    <div>
+      <span class="nav-brand-name">Prestige Properties</span>
+      <span class="nav-brand-sub">Premium Real Estate</span>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#properties">Ακίνητα</a>
+    <a href="#agents">Σύμβουλοι</a>
+    <a href="#contact">Επικοινωνία</a>
+  </div>
+  <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Εκδήλωση Ενδιαφέροντος</button>
+</nav>
+
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-eyebrow">Premium Real Estate · Θεσσαλονίκη</div>
+    <h1>Βρείτε το <span>Ιδανικό</span><br>σας Ακίνητο</h1>
+    <p>Επιλεγμένα ακίνητα premium ποιότητας στις καλύτερες περιοχές. Από διαμερίσματα έως πολυτελείς κατοικίες.</p>
+    <div class="hero-stats">
+      <div><div class="stat-val">340+</div><div class="stat-label">Ακίνητα</div></div>
+      <div><div class="stat-val">12</div><div class="stat-label">Χρόνια</div></div>
+      <div><div class="stat-val">98%</div><div class="stat-label">Ικανοποίηση</div></div>
+    </div>
+    <button class="btn-gold" onclick="document.getElementById('properties').scrollIntoView({behavior:'smooth'})">Δείτε Ακίνητα</button>
+    <button class="btn-ghost" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Επικοινωνία</button>
+  </div>
+</div>
+
+<div class="search-bar">
+  <div class="search-field"><label>Τύπος</label>
+    <select><option>Διαμέρισμα</option><option>Μονοκατοικία</option><option>Μεζονέτα</option><option>Επαγγελματικό</option></select>
+  </div>
+  <div class="search-field"><label>Περιοχή</label>
+    <select><option>Κέντρο Θεσσαλονίκης</option><option>Καλαμαριά</option><option>Πυλαία</option><option>Τριανδρία</option><option>Περαία</option></select>
+  </div>
+  <div class="search-field"><label>Προϋπολογισμός</label>
+    <select><option>έως 150.000€</option><option>150–300.000€</option><option>300–500.000€</option><option>500.000€+</option></select>
+  </div>
+  <button class="search-submit">Αναζήτηση</button>
+</div>
+
+<!-- PROPERTIES -->
+<section id="properties">
+  <div class="sec-label">Available Listings</div>
+  <h2 class="sec-title">Επιλεγμένα Ακίνητα</h2>
+  <p class="sec-sub">Ανακαλύψτε τα καλύτερα ακίνητα της αγοράς</p>
+
+  <div class="props-grid">
+    <div class="prop-card">
+      <div class="prop-img">
+        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=80" alt="property" loading="lazy">
+        <span class="prop-tag">Πώληση</span>
+        <span class="prop-price">285.000€</span>
+      </div>
+      <div class="prop-body">
+        <div class="prop-title">Πεντάρι Luxury, Πυλαία</div>
+        <div class="prop-loc"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>Πυλαία, Θεσσαλονίκη</div>
+        <div class="prop-specs">
+          <div class="prop-spec"><strong>145 τ.μ.</strong>Εμβαδόν</div>
+          <div class="prop-spec"><strong>5</strong>Δωμάτια</div>
+          <div class="prop-spec"><strong>2</strong>Μπάνια</div>
+          <div class="prop-spec"><strong>2020</strong>Έτος</div>
+        </div>
+      </div>
+    </div>
+    <div class="prop-card">
+      <div class="prop-img">
+        <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=600&q=80" alt="property" loading="lazy">
+        <span class="prop-tag">Πώληση</span>
+        <span class="prop-price">520.000€</span>
+      </div>
+      <div class="prop-body">
+        <div class="prop-title">Villa με Pool, Περαία</div>
+        <div class="prop-loc"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>Περαία, Θεσσαλονίκη</div>
+        <div class="prop-specs">
+          <div class="prop-spec"><strong>280 τ.μ.</strong>Εμβαδόν</div>
+          <div class="prop-spec"><strong>6</strong>Δωμάτια</div>
+          <div class="prop-spec"><strong>3</strong>Μπάνια</div>
+          <div class="prop-spec"><strong>2018</strong>Έτος</div>
+        </div>
+      </div>
+    </div>
+    <div class="prop-card">
+      <div class="prop-img">
+        <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=600&q=80" alt="property" loading="lazy">
+        <span class="prop-tag" style="background:#1a3a5c;color:var(--gold);">Ενοίκιο</span>
+        <span class="prop-price">950€/μήνα</span>
+      </div>
+      <div class="prop-body">
+        <div class="prop-title">Τριάρι Modern, Κέντρο</div>
+        <div class="prop-loc"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>Κέντρο, Θεσσαλονίκη</div>
+        <div class="prop-specs">
+          <div class="prop-spec"><strong>95 τ.μ.</strong>Εμβαδόν</div>
+          <div class="prop-spec"><strong>3</strong>Δωμάτια</div>
+          <div class="prop-spec"><strong>2</strong>Μπάνια</div>
+          <div class="prop-spec"><strong>2022</strong>Έτος</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AGENTS -->
+<section id="agents" style="background:var(--dark);max-width:100%;padding:5rem 3rem;">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div class="sec-label">Our Team</div>
+    <h2 class="sec-title">Οι Σύμβουλοί μας</h2>
+    <div class="agents-grid">
+      <div class="agent-card">
+        <img class="agent-img" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&q=80" alt="agent">
+        <div class="agent-name">Νίκος Παπαδόπουλος</div>
+        <div class="agent-title">Senior Property Advisor</div>
+        <div class="agent-contact">+30 693 111 2233</div>
+      </div>
+      <div class="agent-card">
+        <img class="agent-img" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&q=80" alt="agent">
+        <div class="agent-name">Μαρία Γεωργίου</div>
+        <div class="agent-title">Luxury Specialist</div>
+        <div class="agent-contact">+30 693 444 5566</div>
+      </div>
+      <div class="agent-card">
+        <img class="agent-img" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&q=80" alt="agent">
+        <div class="agent-name">Γιώργης Αλεξανδρής</div>
+        <div class="agent-title">Commercial Properties</div>
+        <div class="agent-contact">+30 693 777 8899</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<div class="contact-section" id="contact">
+  <div class="contact-inner">
+    <div class="sec-label">Get in Touch</div>
+    <h2 class="sec-title">Εκδήλωση Ενδιαφέροντος</h2>
+    <div class="form-2col">
+      <div class="fg"><label>Όνομα *</label><input type="text" placeholder="Ονοματεπώνυμο"></div>
+      <div class="fg"><label>Τηλέφωνο *</label><input type="tel" placeholder="+30 6900 000000"></div>
+      <div class="fg"><label>Email *</label><input type="email" placeholder="email@example.com"></div>
+      <div class="fg"><label>Ενδιαφέρον</label>
+        <select><option>Αγορά ακινήτου</option><option>Ενοικίαση</option><option>Πώληση ακινήτου</option><option>Επένδυση</option></select>
+      </div>
+      <div class="fg form-full2"><label>Μήνυμα</label><textarea placeholder="Περιγράψτε τι αναζητάτε..."></textarea></div>
+    </div>
+    <button class="form-submit" onclick="alert('Ευχαριστούμε! Θα επικοινωνήσουμε μαζί σας σύντομα.')">Αποστολή Αιτήματος</button>
+
+    <div class="loc-grid" style="margin-top:4rem;">
+      <div class="loc-info">
+        <div style="font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;">Γραφεία</div>
+        <p><strong>Prestige Properties</strong></p>
+        <p>Βασιλίσσης Όλγας 98</p>
+        <p>Θεσσαλονίκη 546 44</p>
+        <br>
+        <p><strong>Τηλ:</strong> +30 2310 987 654</p>
+        <p><strong>Email:</strong> info@prestige-properties.gr</p>
+        <br>
+        <p><strong>Δευτ–Παρ:</strong> 09:00 – 18:00</p>
+        <p><strong>Σάββατο:</strong> 10:00 – 14:00</p>
+      </div>
+      <div class="map-wrap">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3027.5!2d22.9530!3d40.6350!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14a838f41428e0ed%3A0x9bae715b8d574a9!2sThessaloniki!5e0!3m2!1sel!2sgr!4v1" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="brand">Prestige Properties</div>
+  <p>© 2026 Prestige Properties — Designed by ATC Digital Craft</p>
+</footer>
+</body>
+</html>

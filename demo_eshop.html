@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LUMIÈRE — Fashion</title>
+<link href="https://fonts.googleapis.com/css2?family=Didact+Gothic&family=Marcellus&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#faf9f7;--dark:#1a1418;--purple:#2d1f3d;--blush:#e8d5d0;--mauve:#9b7b8a;--gold:#b8963c;--white:#ffffff;--text:#7a6870;--border:#e8e0e4;}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--dark);font-family:'Montserrat',sans-serif;}
+nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(250,249,247,0.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0.9rem 3rem;display:flex;align-items:center;justify-content:space-between;}
+.nav-logo{font-family:'Marcellus',serif;font-size:1.8rem;letter-spacing:0.2em;color:var(--dark);}
+.nav-links{display:flex;gap:2.5rem;}
+.nav-links a{font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--text);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:var(--dark);}
+.nav-actions{display:flex;align-items:center;gap:1.5rem;}
+.nav-cart{position:relative;cursor:pointer;font-size:1.3rem;}
+.cart-count{position:absolute;top:-5px;right:-8px;background:var(--dark);color:white;width:18px;height:18px;border-radius:50%;font-size:0.6rem;display:flex;align-items:center;justify-content:center;font-weight:600;}
+
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden;}
+.hero-left{background:var(--purple);display:flex;flex-direction:column;justify-content:center;padding:10rem 4rem 4rem;position:relative;}
+.hero-left::after{content:'LUMIÈRE';position:absolute;bottom:-50px;left:-20px;font-family:'Marcellus',serif;font-size:18vw;color:rgba(255,255,255,0.03);letter-spacing:-0.05em;pointer-events:none;line-height:1;}
+.hero-eyebrow{font-size:0.65rem;letter-spacing:0.4em;text-transform:uppercase;color:var(--blush);opacity:0.7;margin-bottom:1.5rem;}
+.hero h1{font-family:'Marcellus',serif;font-size:clamp(3rem,5vw,5.5rem);color:white;line-height:1.05;margin-bottom:1.5rem;}
+.hero-tagline{font-size:0.9rem;color:rgba(255,255,255,0.6);line-height:1.9;margin-bottom:3rem;max-width:380px;}
+.btn-blush{background:var(--blush);color:var(--dark);padding:1rem 2.5rem;font-size:0.75rem;letter-spacing:0.25em;text-transform:uppercase;font-weight:600;border:none;cursor:pointer;font-family:'Montserrat',sans-serif;transition:all 0.3s;}
+.btn-blush:hover{background:#f0c8c0;transform:translateY(-2px);}
+.hero-right{position:relative;overflow:hidden;}
+.hero-right img{width:100%;height:100%;object-fit:cover;object-position:top;}
+.hero-tag{position:absolute;top:3rem;right:2rem;background:white;padding:1rem 1.5rem;text-align:center;}
+.hero-tag span{display:block;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--text);}
+.hero-tag strong{display:block;font-family:'Marcellus',serif;font-size:1.5rem;color:var(--dark);margin-top:0.3rem;}
+
+/* CATEGORIES */
+.cats-section{padding:6rem 3rem;max-width:1300px;margin:0 auto;}
+.sec-label{font-size:0.62rem;letter-spacing:0.4em;text-transform:uppercase;color:var(--mauve);margin-bottom:0.8rem;}
+.sec-h{font-family:'Marcellus',serif;font-size:clamp(2rem,3.5vw,3rem);margin-bottom:2.5rem;}
+.cats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;}
+.cat-item{position:relative;overflow:hidden;cursor:pointer;}
+.cat-img{height:320px;overflow:hidden;}
+.cat-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s;}
+.cat-item:hover .cat-img img{transform:scale(1.08);}
+.cat-label{position:absolute;bottom:0;left:0;right:0;padding:1.5rem;background:linear-gradient(transparent,rgba(26,20,24,0.8));}
+.cat-name{font-family:'Marcellus',serif;font-size:1.2rem;color:white;}
+.cat-count{font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.6);}
+
+/* PRODUCTS */
+.products-section{background:white;padding:6rem 0;}
+.products-inner{max-width:1300px;margin:0 auto;padding:0 3rem;}
+.filter-bar{display:flex;gap:1rem;margin-bottom:3rem;flex-wrap:wrap;}
+.filter-btn{padding:0.5rem 1.5rem;font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;border:1px solid var(--border);background:transparent;color:var(--text);cursor:pointer;font-family:'Montserrat',sans-serif;transition:all 0.2s;}
+.filter-btn.active,.filter-btn:hover{background:var(--dark);color:white;border-color:var(--dark);}
+.products-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;}
+.prod-card{cursor:pointer;position:relative;}
+.prod-img{height:360px;overflow:hidden;background:var(--bg);position:relative;}
+.prod-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s;}
+.prod-card:hover .prod-img img{transform:scale(1.05);}
+.prod-badge{position:absolute;top:1rem;left:1rem;font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;padding:0.3rem 0.8rem;}
+.badge-new{background:var(--dark);color:white;}
+.badge-sale{background:var(--mauve);color:white;}
+.prod-wish{position:absolute;top:1rem;right:1rem;width:36px;height:36px;background:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.1rem;opacity:0;transition:opacity 0.3s;cursor:pointer;}
+.prod-card:hover .prod-wish{opacity:1;}
+.prod-body{padding:1.2rem 0;}
+.prod-brand{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--mauve);margin-bottom:0.3rem;}
+.prod-name{font-family:'Marcellus',serif;font-size:1rem;margin-bottom:0.4rem;}
+.prod-price{font-size:0.9rem;color:var(--dark);font-weight:600;}
+.prod-old{text-decoration:line-through;color:var(--text);font-size:0.8rem;margin-left:0.5rem;font-weight:400;}
+.prod-colors{display:flex;gap:0.4rem;margin-top:0.5rem;}
+.color-dot{width:14px;height:14px;border-radius:50%;border:2px solid white;box-shadow:0 0 0 1px rgba(0,0,0,0.15);cursor:pointer;}
+
+/* CART MODAL */
+#cart-modal{display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,0.4);}
+#cart-modal.open{display:block;}
+.cart-panel{position:absolute;right:0;top:0;bottom:0;width:400px;background:white;padding:2rem;overflow-y:auto;animation:slideIn 0.3s ease;}
+@keyframes slideIn{from{transform:translateX(100%)}to{transform:translateX(0)}}
+.cart-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid var(--border);}
+.cart-title{font-family:'Marcellus',serif;font-size:1.4rem;}
+.cart-close{background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--text);}
+.cart-item{display:flex;gap:1rem;margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border);}
+.cart-item-img{width:80px;height:90px;object-fit:cover;background:var(--bg);}
+.cart-item-img img{width:100%;height:100%;object-fit:cover;}
+.cart-item-info{flex:1;}
+.cart-item-name{font-family:'Marcellus',serif;font-size:0.95rem;margin-bottom:0.3rem;}
+.cart-item-price{font-size:0.85rem;color:var(--mauve);}
+.cart-total{font-family:'Marcellus',serif;font-size:1.2rem;display:flex;justify-content:space-between;margin-top:2rem;padding-top:1rem;border-top:1px solid var(--border);}
+.checkout-btn{width:100%;background:var(--dark);color:white;padding:1.1rem;font-size:0.8rem;letter-spacing:0.2em;text-transform:uppercase;border:none;cursor:pointer;margin-top:1.5rem;font-family:'Montserrat',sans-serif;font-weight:600;}
+.checkout-btn:hover{background:var(--purple);}
+
+/* NEWSLETTER */
+.newsletter{background:var(--purple);padding:6rem 3rem;text-align:center;}
+.newsletter h2{font-family:'Marcellus',serif;font-size:clamp(2rem,3.5vw,3rem);color:white;margin-bottom:1rem;}
+.newsletter p{font-size:0.9rem;color:rgba(255,255,255,0.6);margin-bottom:2.5rem;}
+.newsletter-form{display:flex;gap:1rem;max-width:450px;margin:0 auto;}
+.newsletter-form input{flex:1;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;padding:0.9rem 1.2rem;font-family:'Montserrat',sans-serif;font-size:0.9rem;outline:none;}
+.newsletter-form input::placeholder{color:rgba(255,255,255,0.4);}
+.newsletter-form input:focus{border-color:var(--blush);}
+.newsletter-form button{background:var(--blush);color:var(--dark);padding:0.9rem 2rem;font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;font-weight:600;border:none;cursor:pointer;font-family:'Montserrat',sans-serif;white-space:nowrap;transition:all 0.2s;}
+.newsletter-form button:hover{background:#f0c8c0;}
+
+/* LOCATION */
+.location-section{padding:6rem 3rem;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
+.loc-text p{font-size:0.9rem;color:var(--text);line-height:1.8;margin-bottom:0.5rem;}
+.loc-text strong{color:var(--dark);}
+.map6{border:1px solid var(--border);}
+.map6 iframe{width:100%;height:280px;border:none;filter:sepia(20%);}
+
+footer{background:var(--dark);padding:4rem 3rem 2rem;text-align:center;}
+footer .fl{font-family:'Marcellus',serif;font-size:2.5rem;color:white;letter-spacing:0.2em;margin-bottom:0.5rem;}
+footer p{font-size:0.75rem;color:rgba(255,255,255,0.25);}
+
+@media(max-width:768px){nav{padding:1rem;}.nav-links{display:none;}.hero{grid-template-columns:1fr;}.hero-right{height:50vh;}.cats-grid{grid-template-columns:repeat(2,1fr);}.products-grid{grid-template-columns:repeat(2,1fr);}.cats-section,.products-inner,.location-section{padding:3.5rem 1.2rem;}.location-section{grid-template-columns:1fr;}.cart-panel{width:100%;}.newsletter{padding:4rem 1.5rem;}.newsletter-form{flex-direction:column;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div style="width:200px;"></div>
+  <div class="nav-logo">LUMIÈRE</div>
+  <div class="nav-actions">
+    <div class="nav-links">
+      <a href="#categories">Collections</a>
+      <a href="#products">Shop</a>
+      <a href="#location">Stores</a>
+    </div>
+    <div class="nav-cart" onclick="document.getElementById('cart-modal').classList.toggle('open')">
+      🛍️ <span class="cart-count" id="cart-count">3</span>
+    </div>
+  </div>
+</nav>
+
+<!-- CART MODAL -->
+<div id="cart-modal" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="cart-panel">
+    <div class="cart-header">
+      <span class="cart-title">Καλάθι</span>
+      <button class="cart-close" onclick="document.getElementById('cart-modal').classList.remove('open')">✕</button>
+    </div>
+    <div class="cart-item">
+      <div class="cart-item-img"><img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=200&q=80" alt="product"></div>
+      <div class="cart-item-info">
+        <div class="cart-item-name">Silk Blouse — Ivory</div>
+        <div class="cart-item-price">Μέγεθος: S &nbsp;·&nbsp; 89€</div>
+      </div>
+    </div>
+    <div class="cart-item">
+      <div class="cart-item-img"><img src="https://images.unsplash.com/photo-1594938298603-c8148c4b4a83?w=200&q=80" alt="product"></div>
+      <div class="cart-item-info">
+        <div class="cart-item-name">Linen Trousers — Sand</div>
+        <div class="cart-item-price">Μέγεθος: M &nbsp;·&nbsp; 115€</div>
+      </div>
+    </div>
+    <div class="cart-item">
+      <div class="cart-item-img"><img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=200&q=80" alt="product"></div>
+      <div class="cart-item-info">
+        <div class="cart-item-name">Leather Tote — Black</div>
+        <div class="cart-item-price">One Size &nbsp;·&nbsp; 195€</div>
+      </div>
+    </div>
+    <div class="cart-total"><span>Σύνολο</span><span>399€</span></div>
+    <button class="checkout-btn" onclick="alert('Ευχαριστούμε! Θα μεταβείτε στο checkout.')">Ολοκλήρωση Αγοράς →</button>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">New Collection · Spring 2026</div>
+    <h1>L'Art<br>du Style</h1>
+    <p class="hero-tagline">Επιλεγμένα κομμάτια που συνδυάζουν την ελληνική αισθητική με τη σύγχρονη γαλλική κομψότητα.</p>
+    <button class="btn-blush" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">Shop the Collection</button>
+  </div>
+  <div class="hero-right">
+    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80" alt="fashion" loading="lazy">
+    <div class="hero-tag">
+      <span>Spring Drop</span>
+      <strong>-30%</strong>
+    </div>
+  </div>
+</div>
+
+<!-- CATEGORIES -->
+<div class="cats-section" id="categories">
+  <div class="sec-label">Browse by Category</div>
+  <h2 class="sec-h">Συλλογές</h2>
+  <div class="cats-grid">
+    <div class="cat-item">
+      <div class="cat-img"><img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=400&q=80" alt="category" loading="lazy"></div>
+      <div class="cat-label"><div class="cat-name">Tops & Blouses</div><div class="cat-count">48 αντικείμενα</div></div>
+    </div>
+    <div class="cat-item">
+      <div class="cat-img"><img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=400&q=80" alt="category" loading="lazy"></div>
+      <div class="cat-label"><div class="cat-name">Dresses</div><div class="cat-count">63 αντικείμενα</div></div>
+    </div>
+    <div class="cat-item">
+      <div class="cat-img"><img src="https://images.unsplash.com/photo-1591369822096-ffd140ec948b?w=400&q=80" alt="category" loading="lazy"></div>
+      <div class="cat-label"><div class="cat-name">Accessories</div><div class="cat-count">31 αντικείμενα</div></div>
+    </div>
+    <div class="cat-item">
+      <div class="cat-img"><img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=400&q=80" alt="category" loading="lazy"></div>
+      <div class="cat-label"><div class="cat-name">Bags & Shoes</div><div class="cat-count">25 αντικείμενα</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- PRODUCTS -->
+<div class="products-section" id="products">
+  <div class="products-inner">
+    <div class="sec-label">Featured Items</div>
+    <h2 class="sec-h">New Arrivals</h2>
+    <div class="filter-bar">
+      <button class="filter-btn active">Όλα</button>
+      <button class="filter-btn" onclick="setActive(this)">Tops</button>
+      <button class="filter-btn" onclick="setActive(this)">Dresses</button>
+      <button class="filter-btn" onclick="setActive(this)">Accessories</button>
+      <button class="filter-btn" onclick="setActive(this)">Sale</button>
+    </div>
+    <div class="products-grid">
+      <div class="prod-card">
+        <div class="prod-img">
+          <img src="https://images.unsplash.com/photo-1594938298603-c8148c4b4a83?w=400&q=80" alt="product" loading="lazy">
+          <span class="prod-badge badge-new">New</span>
+          <div class="prod-wish">♡</div>
+        </div>
+        <div class="prod-body">
+          <div class="prod-brand">LUMIÈRE</div>
+          <div class="prod-name">Linen Trousers</div>
+          <div class="prod-price">115€</div>
+          <div class="prod-colors">
+            <div class="color-dot" style="background:#c8b89a;"></div>
+            <div class="color-dot" style="background:#5a5a5a;"></div>
+            <div class="color-dot" style="background:#e8e0d5;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img">
+          <img src="https://images.unsplash.com/photo-1571513722275-4b41940f54b8?w=400&q=80" alt="product" loading="lazy">
+          <span class="prod-badge badge-sale">-25%</span>
+          <div class="prod-wish">♡</div>
+        </div>
+        <div class="prod-body">
+          <div class="prod-brand">LUMIÈRE</div>
+          <div class="prod-name">Silk Midi Dress</div>
+          <div class="prod-price">149€ <span class="prod-old">199€</span></div>
+          <div class="prod-colors">
+            <div class="color-dot" style="background:#d4a0b0;"></div>
+            <div class="color-dot" style="background:#2d2d2d;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img">
+          <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=400&q=80" alt="product" loading="lazy">
+          <span class="prod-badge badge-new">New</span>
+          <div class="prod-wish">♡</div>
+        </div>
+        <div class="prod-body">
+          <div class="prod-brand">LUMIÈRE</div>
+          <div class="prod-name">Leather Tote Bag</div>
+          <div class="prod-price">195€</div>
+          <div class="prod-colors">
+            <div class="color-dot" style="background:#1a1a1a;"></div>
+            <div class="color-dot" style="background:#c9b99a;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img">
+          <img src="https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?w=400&q=80" alt="product" loading="lazy">
+          <div class="prod-wish">♡</div>
+        </div>
+        <div class="prod-body">
+          <div class="prod-brand">LUMIÈRE</div>
+          <div class="prod-name">Wool Blazer</div>
+          <div class="prod-price">245€</div>
+          <div class="prod-colors">
+            <div class="color-dot" style="background:#8a8070;"></div>
+            <div class="color-dot" style="background:#2a2a2a;"></div>
+            <div class="color-dot" style="background:#c8b0b0;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NEWSLETTER -->
+<div class="newsletter">
+  <h2>Μείνετε Ενημερωμένοι</h2>
+  <p>Εγγραφείτε και λάβετε 10% έκπτωση στην πρώτη σας παραγγελία</p>
+  <div class="newsletter-form">
+    <input type="email" placeholder="email@example.com">
+    <button onclick="alert('Ευχαριστούμε! Ελέγξτε το email σας για τον κωδικό έκπτωσης.')">Εγγραφή</button>
+  </div>
+</div>
+
+<!-- LOCATION -->
+<div class="location-section" id="location">
+  <div class="loc-text">
+    <div class="sec-label">Physical Stores</div>
+    <h2 class="sec-h">Επισκεφθείτε μας</h2>
+    <div style="margin-top:1.5rem;">
+      <p><strong>LUMIÈRE Flagship Store</strong></p>
+      <p>Τσιμισκή 56</p>
+      <p>Θεσσαλονίκη 546 23</p><br>
+      <p><strong>Τηλ:</strong> +30 2310 444 555</p>
+      <p><strong>Email:</strong> hello@lumiere.gr</p><br>
+      <p><strong>Δευτ, Τετ, Σαβ:</strong> 10:00 – 18:00</p>
+      <p><strong>Τρ, Πεμ, Παρ:</strong> 10:00 – 20:00</p>
+    </div>
+  </div>
+  <div class="map6">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3027!2d22.942!3d40.632!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14a838f41428e0ed%3A0x9bae715b8d574a9!2sThessaloniki!5e0!3m2!1sel!2sgr!4v1" allowfullscreen loading="lazy"></iframe>
+  </div>
+</div>
+
+<footer>
+  <div class="fl">LUMIÈRE</div>
+  <p>© 2026 LUMIÈRE Fashion — Designed by ATC Digital Craft</p>
+</footer>
+
+<script>
+function setActive(btn){
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+}
+</script>
+</body>
+</html>

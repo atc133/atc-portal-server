@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>APEX Fitness — Push Your Limits</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#080808;--card:#101010;--red:#c41e0a;--orange:#e8400a;--white:#f5f5f5;--text:#888;--border:rgba(255,255,255,0.08);}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--white);font-family:'Inter',sans-serif;}
+nav{position:fixed;top:0;width:100%;z-index:100;padding:1rem 3rem;display:flex;align-items:center;justify-content:space-between;background:rgba(8,8,8,0.96);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
+.nav-logo{font-family:'Oswald',sans-serif;font-size:1.8rem;font-weight:700;letter-spacing:0.08em;color:var(--white);}
+.nav-logo span{color:var(--red);}
+.nav-links{display:flex;gap:2.5rem;}
+.nav-links a{font-size:0.82rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:var(--white);}
+.nav-cta{background:var(--red);color:white;padding:0.7rem 1.8rem;font-family:'Oswald',sans-serif;font-size:0.85rem;letter-spacing:0.15em;text-transform:uppercase;font-weight:600;border:none;cursor:pointer;transition:all 0.2s;}
+.nav-cta:hover{background:var(--orange);}
+
+.hero{min-height:100vh;background:linear-gradient(to bottom,rgba(8,8,8,0.6),rgba(8,8,8,0.85)),url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1600&q=80') center/cover no-repeat;display:flex;align-items:center;padding:8rem 3rem 4rem;position:relative;}
+.hero-bg-text{position:absolute;right:-20px;top:50%;transform:translateY(-50%);font-family:'Oswald',sans-serif;font-size:25vw;font-weight:700;color:rgba(255,255,255,0.02);letter-spacing:-0.05em;pointer-events:none;line-height:1;}
+.hero-content{max-width:700px;position:relative;z-index:1;}
+.hero-eyebrow{font-size:0.72rem;letter-spacing:0.4em;text-transform:uppercase;color:var(--red);margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem;}
+.hero-eyebrow::after{content:'';display:block;width:50px;height:2px;background:var(--red);}
+.hero h1{font-family:'Oswald',sans-serif;font-size:clamp(4rem,10vw,8rem);font-weight:700;line-height:0.9;text-transform:uppercase;letter-spacing:-0.02em;margin-bottom:1.5rem;}
+.hero h1 .accent{color:var(--red);}
+.hero p{font-size:1rem;color:rgba(245,245,245,0.65);line-height:1.8;margin-bottom:3rem;max-width:480px;}
+.hero-actions{display:flex;gap:1rem;align-items:center;}
+.btn-fire{background:linear-gradient(135deg,var(--red),var(--orange));color:white;padding:1.1rem 3rem;font-family:'Oswald',sans-serif;font-size:0.9rem;letter-spacing:0.2em;text-transform:uppercase;font-weight:600;border:none;cursor:pointer;transition:all 0.3s;}
+.btn-fire:hover{transform:translateY(-3px);box-shadow:0 15px 40px rgba(196,30,10,0.4);}
+.btn-line{background:transparent;color:var(--white);padding:1.1rem 2.5rem;font-family:'Oswald',sans-serif;font-size:0.9rem;letter-spacing:0.2em;text-transform:uppercase;font-weight:500;border:2px solid rgba(255,255,255,0.25);cursor:pointer;transition:all 0.2s;}
+.btn-line:hover{border-color:white;}
+.hero-ticker{position:absolute;bottom:0;left:0;right:0;background:var(--red);padding:0.7rem 0;overflow:hidden;}
+.ticker-content{white-space:nowrap;animation:ticker 20s linear infinite;font-family:'Oswald',sans-serif;font-size:0.85rem;letter-spacing:0.2em;text-transform:uppercase;}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* PROGRAMS */
+section{padding:6rem 3rem;max-width:1200px;margin:0 auto;}
+.sec-l{font-size:0.65rem;letter-spacing:0.4em;text-transform:uppercase;color:var(--red);margin-bottom:0.8rem;}
+.sec-h{font-family:'Oswald',sans-serif;font-size:clamp(2.5rem,4vw,4rem);font-weight:700;text-transform:uppercase;letter-spacing:-0.01em;margin-bottom:0.5rem;}
+.sec-p{font-size:0.9rem;color:var(--text);margin-bottom:3rem;}
+
+.programs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.prog-card{background:var(--card);border:1px solid var(--border);overflow:hidden;position:relative;transition:all 0.3s;}
+.prog-card:hover{border-color:rgba(196,30,10,0.5);transform:translateY(-4px);}
+.prog-img{height:220px;overflow:hidden;}
+.prog-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s;}
+.prog-card:hover .prog-img img{transform:scale(1.08);}
+.prog-body{padding:1.5rem;}
+.prog-tag{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--red);margin-bottom:0.6rem;}
+.prog-name{font-family:'Oswald',sans-serif;font-size:1.4rem;font-weight:600;text-transform:uppercase;margin-bottom:0.5rem;}
+.prog-desc{font-size:0.82rem;color:var(--text);line-height:1.6;margin-bottom:1rem;}
+.prog-meta{display:flex;gap:1.5rem;}
+.pmeta{font-size:0.8rem;color:var(--text);}<br>
+.pmeta strong{color:var(--white);display:block;font-size:0.9rem;}
+
+/* TRAINERS */
+.trainers-bg{background:#0d0000;padding:6rem 0;border-top:2px solid var(--red);}
+.trainers-inner{max-width:1200px;margin:0 auto;padding:0 3rem;}
+.trainers-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:3rem;}
+.trainer-card{background:var(--card);border:1px solid var(--border);overflow:hidden;transition:all 0.3s;}
+.trainer-card:hover{border-color:rgba(196,30,10,0.4);}
+.trainer-img{height:280px;overflow:hidden;}
+.trainer-img img{width:100%;height:100%;object-fit:cover;object-position:top;filter:grayscale(30%);transition:all 0.4s;}
+.trainer-card:hover .trainer-img img{filter:grayscale(0);transform:scale(1.04);}
+.trainer-body{padding:1.2rem;}
+.trainer-name{font-family:'Oswald',sans-serif;font-size:1.1rem;font-weight:600;text-transform:uppercase;}
+.trainer-spec{font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--red);margin-top:0.2rem;}
+
+/* PRICING */
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem;}
+.price-card{background:var(--card);border:1px solid var(--border);padding:2.5rem;text-align:center;position:relative;transition:all 0.3s;}
+.price-card.featured{border-color:var(--red);border-top:3px solid var(--red);}
+.price-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--red);color:white;font-family:'Oswald',sans-serif;font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;padding:0.3rem 1rem;}
+.price-plan{font-family:'Oswald',sans-serif;font-size:1rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--text);margin-bottom:1.5rem;}
+.price-val{font-family:'Oswald',sans-serif;font-size:3.5rem;font-weight:700;color:var(--white);}
+.price-per{font-size:0.8rem;color:var(--text);}
+.price-list{margin:2rem 0;display:flex;flex-direction:column;gap:0.8rem;}
+.price-item{font-size:0.85rem;color:var(--text);display:flex;align-items:center;gap:0.6rem;justify-content:center;}
+.price-item::before{content:'✓';color:var(--red);font-weight:700;}
+.price-btn{width:100%;background:var(--red);color:white;padding:0.9rem;font-family:'Oswald',sans-serif;font-size:0.85rem;letter-spacing:0.15em;text-transform:uppercase;font-weight:600;border:none;cursor:pointer;transition:all 0.2s;}
+.price-btn:hover{background:var(--orange);}
+.price-card:not(.featured) .price-btn{background:transparent;border:2px solid rgba(255,255,255,0.15);color:var(--white);}
+.price-card:not(.featured) .price-btn:hover{border-color:var(--red);color:var(--red);}
+
+/* FREE TRIAL FORM */
+.trial-section{background:linear-gradient(135deg,#0d0000,#1a0000);padding:6rem 0;border-top:2px solid var(--red);}
+.trial-inner{max-width:650px;margin:0 auto;padding:0 3rem;text-align:center;}
+.trial-form{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem;text-align:left;}
+.tf{display:flex;flex-direction:column;gap:0.4rem;}
+.tf label{font-size:0.68rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--red);}
+.tf input,.tf select{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:white;padding:0.85rem 1rem;font-family:'Inter',sans-serif;font-size:0.9rem;outline:none;transition:border-color 0.2s;}
+.tf input:focus,.tf select:focus{border-color:var(--red);}
+.tf select option{background:#0d0000;}
+.trial-btn{width:100%;background:linear-gradient(135deg,var(--red),var(--orange));color:white;padding:1.2rem;font-family:'Oswald',sans-serif;font-size:0.95rem;letter-spacing:0.2em;text-transform:uppercase;font-weight:700;border:none;cursor:pointer;margin-top:1rem;transition:all 0.3s;}
+.trial-btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(196,30,10,0.4);}
+
+/* LOCATION */
+.loc4-section{padding:6rem 0;background:var(--card);}
+.loc4-inner{max-width:1200px;margin:0 auto;padding:0 3rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;}
+.loc4-info p{font-size:0.9rem;color:var(--text);line-height:1.8;margin-bottom:0.5rem;}
+.loc4-info strong{color:var(--white);}
+.map4{border:1px solid var(--border);}
+.map4 iframe{width:100%;height:300px;border:none;filter:grayscale(90%) invert(80%);}
+
+footer{background:#050505;padding:3rem;text-align:center;border-top:2px solid var(--red);}
+footer p{font-size:0.8rem;color:var(--text);opacity:0.5;}
+footer .fl{font-family:'Oswald',sans-serif;font-size:2rem;font-weight:700;letter-spacing:0.08em;color:var(--white);margin-bottom:0.8rem;}<br>
+footer .fl span{color:var(--red);}
+
+@media(max-width:768px){nav{padding:1rem;}.nav-links{display:none;}section{padding:3.5rem 1.2rem;}.programs-grid,.trainers-grid,.pricing-grid,.trial-form,.loc4-inner{grid-template-columns:1fr;}.hero{padding:7rem 1.2rem 3rem;}.trainers-inner,.trial-inner,.loc4-inner{padding:0 1.2rem;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">APEX<span>.</span>FITNESS</div>
+  <div class="nav-links">
+    <a href="#programs">Προγράμματα</a>
+    <a href="#trainers">Trainers</a>
+    <a href="#pricing">Τιμές</a>
+    <a href="#trial">Δωρεάν Δοκιμή</a>
+  </div>
+  <button class="nav-cta" onclick="document.getElementById('trial').scrollIntoView({behavior:'smooth'})">Ξεκίνα Σήμερα</button>
+</nav>
+
+<div class="hero">
+  <div class="hero-bg-text">APEX</div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Est. 2015 · Θεσσαλονίκη</div>
+    <h1>PUSH<br>YOUR<br><span class="accent">LIMITS</span></h1>
+    <p>Κορυφαίο γυμναστήριο στη Θεσσαλονίκη με προηγμένο εξοπλισμό, certified trainers και προγράμματα για κάθε επίπεδο.</p>
+    <div class="hero-actions">
+      <button class="btn-fire" onclick="document.getElementById('trial').scrollIntoView({behavior:'smooth'})">Δωρεάν Δοκιμή</button>
+      <button class="btn-line" onclick="document.getElementById('programs').scrollIntoView({behavior:'smooth'})">Τα Προγράμματα</button>
+    </div>
+  </div>
+  <div class="hero-ticker">
+    <div class="ticker-content">
+      &nbsp;&nbsp;&nbsp;💪 STRENGTH TRAINING &nbsp;·&nbsp; 🏃 CARDIO ZONE &nbsp;·&nbsp; 🥊 BOXING &nbsp;·&nbsp; 🧘 YOGA &nbsp;·&nbsp; 🔥 HIIT &nbsp;·&nbsp; 🏋️ POWERLIFTING &nbsp;·&nbsp; 💪 STRENGTH TRAINING &nbsp;·&nbsp; 🏃 CARDIO ZONE &nbsp;·&nbsp; 🥊 BOXING &nbsp;·&nbsp; 🧘 YOGA &nbsp;·&nbsp; 🔥 HIIT &nbsp;·&nbsp; 🏋️ POWERLIFTING &nbsp;·&nbsp;
+    </div>
+  </div>
+</div>
+
+<!-- PROGRAMS -->
+<section id="programs">
+  <div class="sec-l">Training Programs</div>
+  <h2 class="sec-h">Τα Προγράμματά μας</h2>
+  <p class="sec-p">Για κάθε στόχο, κάθε επίπεδο, κάθε ηλικία</p>
+  <div class="programs-grid">
+    <div class="prog-card">
+      <div class="prog-img"><img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=600&q=80" alt="weights" loading="lazy"></div>
+      <div class="prog-body">
+        <div class="prog-tag">Strength</div>
+        <div class="prog-name">Powerlifting</div>
+        <div class="prog-desc">Ανύψωση βαρών, squat, deadlift και bench press με expert καθοδήγηση.</div>
+        <div class="prog-meta">
+          <div class="pmeta"><strong>3x/εβδ.</strong>Συχνότητα</div>
+          <div class="pmeta"><strong>60 λεπτά</strong>Διάρκεια</div>
+          <div class="pmeta"><strong>Όλα</strong>Επίπεδα</div>
+        </div>
+      </div>
+    </div>
+    <div class="prog-card">
+      <div class="prog-img"><img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600&q=80" alt="hiit" loading="lazy"></div>
+      <div class="prog-body">
+        <div class="prog-tag">Cardio</div>
+        <div class="prog-name">HIIT Training</div>
+        <div class="prog-desc">Υψηλής έντασης διαλειμματική προπόνηση για μέγιστη καύση λίπους.</div>
+        <div class="prog-meta">
+          <div class="pmeta"><strong>4x/εβδ.</strong>Συχνότητα</div>
+          <div class="pmeta"><strong>45 λεπτά</strong>Διάρκεια</div>
+          <div class="pmeta"><strong>Μέσο+</strong>Επίπεδο</div>
+        </div>
+      </div>
+    </div>
+    <div class="prog-card">
+      <div class="prog-img"><img src="https://images.unsplash.com/photo-1549060279-7e168fcee0c2?w=600&q=80" alt="boxing" loading="lazy"></div>
+      <div class="prog-body">
+        <div class="prog-tag">Combat</div>
+        <div class="prog-name">Boxing</div>
+        <div class="prog-desc">Πυγμαχία ως αθλητική δραστηριότητα, τεχνική, stamina και αυτοάμυνα.</div>
+        <div class="prog-meta">
+          <div class="pmeta"><strong>2x/εβδ.</strong>Συχνότητα</div>
+          <div class="pmeta"><strong>90 λεπτά</strong>Διάρκεια</div>
+          <div class="pmeta"><strong>Αρχάριοι</strong>Επίπεδο</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRAINERS -->
+<div class="trainers-bg" id="trainers">
+  <div class="trainers-inner">
+    <div class="sec-l">The Team</div>
+    <h2 class="sec-h">Personal Trainers</h2>
+    <p class="sec-p" style="color:var(--text);">Certified professionals αφοσιωμένοι στους στόχους σου</p>
+    <div class="trainers-grid">
+      <div class="trainer-card">
+        <div class="trainer-img"><img src="https://images.unsplash.com/photo-1567013127542-490d757e51fc?w=400&q=80" alt="trainer" loading="lazy"></div>
+        <div class="trainer-body"><div class="trainer-name">Αλέξης Νικολαΐδης</div><div class="trainer-spec">Strength & Conditioning</div></div>
+      </div>
+      <div class="trainer-card">
+        <div class="trainer-img"><img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&q=80" alt="trainer" loading="lazy"></div>
+        <div class="trainer-body"><div class="trainer-name">Σοφία Παπά</div><div class="trainer-spec">HIIT & Cardio</div></div>
+      </div>
+      <div class="trainer-card">
+        <div class="trainer-img"><img src="https://images.unsplash.com/photo-1597347316205-36f6c451902a?w=400&q=80" alt="trainer" loading="lazy"></div>
+        <div class="trainer-body"><div class="trainer-name">Κώστας Μαρκόπουλος</div><div class="trainer-spec">Boxing & Combat</div></div>
+      </div>
+      <div class="trainer-card">
+        <div class="trainer-img"><img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=400&q=80" alt="trainer" loading="lazy"></div>
+        <div class="trainer-body"><div class="trainer-name">Αντιγόνη Δήμου</div><div class="trainer-spec">Yoga & Wellness</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="sec-l">Membership</div>
+  <h2 class="sec-h">Τιμές Συνδρομής</h2>
+  <p class="sec-p">Χωρίς κρυφές χρεώσεις, χωρίς δεσμεύσεις</p>
+  <div class="pricing-grid">
+    <div class="price-card">
+      <div class="price-plan">Basic</div>
+      <div class="price-val">29<span class="price-per">€/μήνα</span></div>
+      <div class="price-list">
+        <div class="price-item">Πρόσβαση βάρη & cardio</div>
+        <div class="price-item">Ωράριο 6:00 – 22:00</div>
+        <div class="price-item">2 group classes/εβδ.</div>
+        <div class="price-item">Αποδυτήρια & ντους</div>
+      </div>
+      <button class="price-btn">Επιλογή</button>
+    </div>
+    <div class="price-card featured">
+      <div class="price-badge">Most Popular</div>
+      <div class="price-plan">Pro</div>
+      <div class="price-val">49<span class="price-per">€/μήνα</span></div>
+      <div class="price-list">
+        <div class="price-item">Όλα του Basic</div>
+        <div class="price-item">Unlimited group classes</div>
+        <div class="price-item">1 PT session/μήνα</div>
+        <div class="price-item">Nutrition plan</div>
+        <div class="price-item">Body assessment</div>
+      </div>
+      <button class="price-btn">Επιλογή</button>
+    </div>
+    <div class="price-card">
+      <div class="price-plan">Elite</div>
+      <div class="price-val">89<span class="price-per">€/μήνα</span></div>
+      <div class="price-list">
+        <div class="price-item">Όλα του Pro</div>
+        <div class="price-item">4 PT sessions/μήνα</div>
+        <div class="price-item">Custom program</div>
+        <div class="price-item">Priority booking</div>
+        <div class="price-item">Supplement discount 15%</div>
+      </div>
+      <button class="price-btn">Επιλογή</button>
+    </div>
+  </div>
+</section>
+
+<!-- TRIAL -->
+<div class="trial-section" id="trial">
+  <div class="trial-inner">
+    <div class="sec-l">Free Trial</div>
+    <h2 class="sec-h">Δωρεάν Δοκιμή 7 Ημερών</h2>
+    <p style="color:var(--text);font-size:0.9rem;margin-top:0.5rem;">Χωρίς υποχρέωση. Δοκίμασε τα πάντα δωρεάν.</p>
+    <div class="trial-form">
+      <div class="tf"><label>Όνομα *</label><input type="text" placeholder="Ονοματεπώνυμο"></div>
+      <div class="tf"><label>Τηλέφωνο *</label><input type="tel" placeholder="+30 6900 000000"></div>
+      <div class="tf"><label>Email *</label><input type="email" placeholder="email@example.com"></div>
+      <div class="tf"><label>Ενδιαφέρον</label>
+        <select><option>Powerlifting</option><option>HIIT</option><option>Boxing</option><option>Yoga</option><option>General Fitness</option></select>
+      </div>
+    </div>
+    <button class="trial-btn" onclick="alert('Τέλεια! Θα σε καλέσουμε εντός 24 ωρών για να ξεκινήσεις τη δωρεάν εβδομάδα σου!')">Ξεκίνα τη Δωρεάν Δοκιμή →</button>
+  </div>
+</div>
+
+<!-- LOCATION -->
+<div class="loc4-section">
+  <div class="loc4-inner">
+    <div class="loc4-info">
+      <div class="sec-l">Find Us</div>
+      <h2 class="sec-h">Εύρεση</h2>
+      <div style="margin-top:1.5rem;">
+        <p><strong>APEX Fitness</strong></p>
+        <p>Λαγκαδά 140</p>
+        <p>Θεσσαλονίκη 546 29</p><br>
+        <p><strong>Τηλ:</strong> +30 2310 333 444</p>
+        <p><strong>Email:</strong> info@apexfitness.gr</p><br>
+        <p><strong>Δευτ-Παρ:</strong> 06:00 – 23:00</p>
+        <p><strong>Σαβ-Κυρ:</strong> 08:00 – 20:00</p>
+      </div>
+    </div>
+    <div class="map4">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3027!2d22.960!3d40.636!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14a838f41428e0ed%3A0x9bae715b8d574a9!2sThessaloniki!5e0!3m2!1sel!2sgr!4v1" allowfullscreen loading="lazy"></iframe>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="fl">APEX<span>.</span>FITNESS</div>
+  <p>© 2026 APEX Fitness — Designed by ATC Digital Craft</p>
+</footer>
+</body>
+</html>

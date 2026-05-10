@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Παπαδόπουλος & Συνεργάτες — Δικηγορικό Γραφείο</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,700;1,400&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#09090f;--card:#0f0f1a;--navy:#141428;--gold:#B8973A;--cream:#e8e0cc;--text:#8a8aa0;--border:rgba(184,151,58,0.15);}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--cream);font-family:'Barlow',sans-serif;}
+nav{position:fixed;top:0;width:100%;z-index:100;padding:1.2rem 3rem;display:flex;align-items:center;justify-content:space-between;background:rgba(9,9,15,0.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
+.logo{display:flex;flex-direction:column;}
+.logo-main{font-family:'EB Garamond',serif;font-size:1.15rem;letter-spacing:0.05em;}
+.logo-sub{font-size:0.6rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);}
+.nav-links{display:flex;gap:2.5rem;}
+.nav-links a{font-size:0.8rem;letter-spacing:0.1em;color:var(--text);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold);}
+.nav-cta{border:1px solid var(--gold);color:var(--gold);padding:0.6rem 1.5rem;font-size:0.76rem;letter-spacing:0.15em;text-transform:uppercase;background:transparent;cursor:pointer;font-family:'Barlow',sans-serif;transition:all 0.2s;}
+.nav-cta:hover{background:var(--gold);color:var(--bg);}
+
+.hero{min-height:100vh;background:linear-gradient(135deg,rgba(9,9,15,0.97) 50%,rgba(20,20,40,0.85)),url('https://images.unsplash.com/photo-1589391886645-d51941baf7fb?w=1600&q=80') right/cover;display:flex;align-items:center;padding:8rem 3rem 4rem;}
+.hero-inner{max-width:700px;}
+.hero-tag{display:inline-flex;align-items:center;gap:0.8rem;font-size:0.68rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:2rem;border:1px solid var(--border);padding:0.5rem 1.2rem;}
+.hero h1{font-family:'EB Garamond',serif;font-size:clamp(3rem,5.5vw,5rem);font-weight:400;line-height:1.1;margin-bottom:1.5rem;}
+.hero h1 em{font-style:italic;color:var(--gold);}
+.hero p{font-size:1rem;color:var(--text);line-height:1.9;margin-bottom:3rem;max-width:520px;}
+.hero-actions{display:flex;gap:1rem;}
+.btn-solid{background:var(--gold);color:var(--bg);padding:1rem 2.5rem;font-size:0.78rem;letter-spacing:0.18em;text-transform:uppercase;font-weight:600;border:none;cursor:pointer;font-family:'Barlow',sans-serif;transition:all 0.2s;}
+.btn-solid:hover{background:#caa840;transform:translateY(-2px);}
+.btn-border{background:transparent;color:var(--cream);padding:1rem 2rem;font-size:0.78rem;letter-spacing:0.15em;text-transform:uppercase;border:1px solid rgba(232,224,204,0.25);cursor:pointer;font-family:'Barlow',sans-serif;transition:all 0.2s;}
+.btn-border:hover{border-color:var(--gold);color:var(--gold);}
+
+/* PRACTICE AREAS */
+.areas-section{background:var(--card);padding:6rem 0;border-top:1px solid var(--border);}
+.areas-inner{max-width:1200px;margin:0 auto;padding:0 3rem;}
+.sec-eyebrow{font-size:0.65rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--gold);margin-bottom:0.8rem;}
+.sec-h{font-family:'EB Garamond',serif;font-size:clamp(2rem,3vw,3rem);margin-bottom:0.5rem;}
+.sec-p{font-size:0.9rem;color:var(--text);margin-bottom:3rem;}
+.areas-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;}
+.area-card{border:1px solid var(--border);padding:2rem;transition:all 0.3s;position:relative;overflow:hidden;}
+.area-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform 0.4s;}
+.area-card:hover::before{transform:scaleX(1);}
+.area-card:hover{border-color:rgba(184,151,58,0.35);background:rgba(184,151,58,0.04);}
+.area-icon{font-size:2rem;margin-bottom:1.2rem;}
+.area-title{font-family:'EB Garamond',serif;font-size:1.2rem;margin-bottom:0.8rem;}
+.area-desc{font-size:0.82rem;color:var(--text);line-height:1.7;}
+
+/* TEAM */
+section{padding:6rem 3rem;max-width:1200px;margin:0 auto;}
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3rem;}
+.team-card{position:relative;overflow:hidden;}
+.team-img{height:340px;overflow:hidden;}
+.team-img img{width:100%;height:100%;object-fit:cover;object-position:top;filter:grayscale(20%);transition:all 0.5s;}
+.team-card:hover .team-img img{filter:grayscale(0);transform:scale(1.04);}
+.team-info{background:var(--card);border:1px solid var(--border);padding:1.4rem;border-top:2px solid var(--gold);}
+.team-name{font-family:'EB Garamond',serif;font-size:1.2rem;}
+.team-role{font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin:0.3rem 0 0.6rem;}
+.team-spec{font-size:0.82rem;color:var(--text);}
+
+/* WHY US */
+.why-section{background:linear-gradient(135deg,var(--navy),var(--card));padding:6rem 0;border-top:1px solid var(--border);}
+.why-inner{max-width:1200px;margin:0 auto;padding:0 3rem;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
+.why-stats{display:grid;grid-template-columns:1fr 1fr;gap:2rem;}
+.why-stat{border:1px solid var(--border);padding:2rem;text-align:center;}
+.why-num{font-family:'EB Garamond',serif;font-size:3rem;color:var(--gold);display:block;}
+.why-label{font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--text);margin-top:0.5rem;}
+.why-list{display:flex;flex-direction:column;gap:1.5rem;margin-top:2rem;}
+.why-item{display:flex;gap:1rem;align-items:flex-start;}
+.why-dot{width:6px;height:6px;background:var(--gold);border-radius:50%;margin-top:0.5rem;flex-shrink:0;}
+.why-item-text{font-size:0.9rem;color:var(--text);line-height:1.7;}
+
+/* APPOINTMENT FORM */
+.appt-section{padding:5rem 0;background:var(--card);border-top:1px solid var(--border);}
+.appt-inner{max-width:700px;margin:0 auto;padding:0 3rem;text-align:center;}
+.form-g{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem;text-align:left;}
+.fg2{display:flex;flex-direction:column;gap:0.4rem;}
+.fg2 label{font-size:0.66rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);}
+.fg2 input,.fg2 select,.fg2 textarea{background:rgba(255,255,255,0.03);border:1px solid var(--border);color:var(--cream);padding:0.8rem 1rem;font-family:'Barlow',sans-serif;font-size:0.9rem;outline:none;transition:border-color 0.2s;}
+.fg2 input:focus,.fg2 select:focus,.fg2 textarea:focus{border-color:var(--gold);}
+.fg2 select option{background:var(--card);}
+.fg2 textarea{resize:vertical;min-height:100px;}
+.full-col{grid-column:span 2;}
+.sub-btn{width:100%;background:var(--gold);color:var(--bg);padding:1.1rem;font-size:0.8rem;letter-spacing:0.2em;text-transform:uppercase;font-weight:700;border:none;cursor:pointer;margin-top:1rem;font-family:'Barlow',sans-serif;transition:all 0.2s;}
+.sub-btn:hover{background:#caa840;}
+
+/* LOCATION */
+.loc2-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;margin-top:2rem;}
+.loc2-info p{font-size:0.9rem;color:var(--text);line-height:1.8;margin-bottom:0.4rem;}
+.loc2-info strong{color:var(--cream);}
+.map2{border:1px solid var(--border);}
+.map2 iframe{width:100%;height:280px;border:none;filter:grayscale(80%);}
+
+footer{background:#050508;padding:3rem;text-align:center;border-top:1px solid var(--border);}
+footer p{font-size:0.8rem;color:var(--text);opacity:0.4;}
+footer .fl{font-family:'EB Garamond',serif;font-size:1.5rem;color:var(--gold);margin-bottom:0.8rem;}
+
+@media(max-width:768px){nav{padding:1rem;}.nav-links{display:none;}section{padding:3.5rem 1.2rem;}.areas-grid,.team-grid,.why-inner,.form-g,.loc2-grid{grid-template-columns:1fr;}.full-col{grid-column:span 1;}.hero{padding:7rem 1.2rem 3rem;}.areas-inner,.why-inner,.appt-inner{padding:0 1.2rem;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">
+    <span class="logo-main">Παπαδόπουλος & Συνεργάτες</span>
+    <span class="logo-sub">Δικηγορικό Γραφείο · Θεσσαλονίκη</span>
+  </div>
+  <div class="nav-links">
+    <a href="#areas">Υπηρεσίες</a>
+    <a href="#team">Η Ομάδα</a>
+    <a href="#appointment">Ραντεβού</a>
+    <a href="#location">Εύρεση</a>
+  </div>
+  <button class="nav-cta" onclick="document.getElementById('appointment').scrollIntoView({behavior:'smooth'})">Κλείσε Ραντεβού</button>
+</nav>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">⚖️ &nbsp;Ιδρύθηκε 1998 · 25+ Χρόνια Εμπειρίας</div>
+    <h1>Νομική <em>Προστασία</em><br>που Εμπιστεύεστε</h1>
+    <p>Εξειδικευμένοι δικηγόροι με αποδεδειγμένη επιτυχία σε αστικό, εμπορικό και ποινικό δίκαιο. Η υπόθεσή σας είναι η προτεραιότητά μας.</p>
+    <div class="hero-actions">
+      <button class="btn-solid" onclick="document.getElementById('appointment').scrollIntoView({behavior:'smooth'})">Κλείστε Ραντεβού</button>
+      <button class="btn-border" onclick="document.getElementById('areas').scrollIntoView({behavior:'smooth'})">Υπηρεσίες μας</button>
+    </div>
+  </div>
+</div>
+
+<!-- AREAS -->
+<div class="areas-section" id="areas">
+  <div class="areas-inner">
+    <div class="sec-eyebrow">Practice Areas</div>
+    <h2 class="sec-h">Τομείς Εξειδίκευσης</h2>
+    <p class="sec-p">Καλύπτουμε ένα ευρύ φάσμα νομικών ζητημάτων με εξειδικευμένη γνώση</p>
+    <div class="areas-grid">
+      <div class="area-card">
+        <div class="area-icon">🏛️</div>
+        <div class="area-title">Αστικό Δίκαιο</div>
+        <div class="area-desc">Συμβάσεις, ακίνητα, αδικοπραξίες, οικογενειακές υποθέσεις και κληρονομικά.</div>
+      </div>
+      <div class="area-card">
+        <div class="area-icon">💼</div>
+        <div class="area-title">Εμπορικό Δίκαιο</div>
+        <div class="area-desc">Εταιρείες, συγχωνεύσεις, εμπορικές συμφωνίες και εταιρικές διαφορές.</div>
+      </div>
+      <div class="area-card">
+        <div class="area-icon">⚖️</div>
+        <div class="area-title">Ποινικό Δίκαιο</div>
+        <div class="area-desc">Υπεράσπιση κατηγορουμένων σε όλα τα στάδια ποινικής διαδικασίας.</div>
+      </div>
+      <div class="area-card">
+        <div class="area-icon">🏢</div>
+        <div class="area-title">Εργατικό Δίκαιο</div>
+        <div class="area-desc">Απολύσεις, εργασιακές διαφορές, συλλογικές συμβάσεις, αποζημιώσεις.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TEAM -->
+<section id="team">
+  <div class="sec-eyebrow">Our Team</div>
+  <h2 class="sec-h">Η Ομάδα μας</h2>
+  <div class="team-grid">
+    <div class="team-card">
+      <div class="team-img"><img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?w=400&q=80" alt="lawyer" loading="lazy"></div>
+      <div class="team-info">
+        <div class="team-name">Δημήτρης Παπαδόπουλος</div>
+        <div class="team-role">Ιδρυτής & Senior Partner</div>
+        <div class="team-spec">Αστικό & Εμπορικό Δίκαιο</div>
+      </div>
+    </div>
+    <div class="team-card">
+      <div class="team-img"><img src="https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?w=400&q=80" alt="lawyer" loading="lazy"></div>
+      <div class="team-info">
+        <div class="team-name">Ελένη Μιχαηλίδου</div>
+        <div class="team-role">Partner</div>
+        <div class="team-spec">Ποινικό & Εργατικό Δίκαιο</div>
+      </div>
+    </div>
+    <div class="team-card">
+      <div class="team-img"><img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&q=80" alt="lawyer" loading="lazy"></div>
+      <div class="team-info">
+        <div class="team-name">Χρήστος Αντωνίου</div>
+        <div class="team-role">Associate</div>
+        <div class="team-spec">Φορολογικό & Εταιρικό Δίκαιο</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<div class="why-section">
+  <div class="why-inner">
+    <div>
+      <div class="sec-eyebrow">Why Choose Us</div>
+      <h2 class="sec-h">Γιατί να μας Επιλέξετε</h2>
+      <div class="why-list">
+        <div class="why-item"><div class="why-dot"></div><div class="why-item-text">Άμεση ανταπόκριση και ξεκάθαρη επικοινωνία σε κάθε στάδιο της υπόθεσης</div></div>
+        <div class="why-item"><div class="why-dot"></div><div class="why-item-text">Εξειδικευμένη γνώση με συνεχή νομική επιμόρφωση και εκπαίδευση</div></div>
+        <div class="why-item"><div class="why-dot"></div><div class="why-item-text">Πλήρης εμπιστευτικότητα και αφοσίωση στα συμφέροντα κάθε πελάτη</div></div>
+        <div class="why-item"><div class="why-dot"></div><div class="why-item-text">Διαφανής τιμολόγηση χωρίς κρυφές χρεώσεις</div></div>
+      </div>
+    </div>
+    <div class="why-stats">
+      <div class="why-stat"><span class="why-num">25+</span><div class="why-label">Χρόνια</div></div>
+      <div class="why-stat"><span class="why-num">1.200+</span><div class="why-label">Υποθέσεις</div></div>
+      <div class="why-stat"><span class="why-num">94%</span><div class="why-label">Επιτυχία</div></div>
+      <div class="why-stat"><span class="why-num">3</span><div class="why-label">Partners</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- APPOINTMENT -->
+<div class="appt-section" id="appointment">
+  <div class="appt-inner">
+    <div class="sec-eyebrow">Appointment</div>
+    <h2 class="sec-h">Κλείστε Ραντεβού</h2>
+    <p style="font-size:0.9rem;color:var(--text);margin-top:0.5rem;">Η πρώτη συνάντηση είναι δωρεάν. Επικοινωνήστε μαζί μας.</p>
+    <div class="form-g">
+      <div class="fg2"><label>Όνομα *</label><input type="text" placeholder="Ονοματεπώνυμο"></div>
+      <div class="fg2"><label>Τηλέφωνο *</label><input type="tel" placeholder="+30 6900 000000"></div>
+      <div class="fg2"><label>Email *</label><input type="email" placeholder="email@example.com"></div>
+      <div class="fg2"><label>Τομέας</label>
+        <select><option>Αστικό Δίκαιο</option><option>Εμπορικό Δίκαιο</option><option>Ποινικό Δίκαιο</option><option>Εργατικό Δίκαιο</option></select>
+      </div>
+      <div class="fg2 full-col"><label>Σύντομη Περιγραφή</label><textarea placeholder="Περιγράψτε σύντομα την υπόθεσή σας..."></textarea></div>
+    </div>
+    <button class="sub-btn" onclick="alert('Ευχαριστούμε! Θα επικοινωνήσουμε εντός 24 ωρών για να ορίσουμε το ραντεβού σας.')">Αίτηση Ραντεβού</button>
+  </div>
+</div>
+
+<!-- LOCATION -->
+<section id="location">
+  <div class="sec-eyebrow">Find Us</div>
+  <h2 class="sec-h">Εύρεση Γραφείου</h2>
+  <div class="loc2-grid">
+    <div class="loc2-info">
+      <p><strong>Παπαδόπουλος & Συνεργάτες</strong></p>
+      <p>Τσιμισκή 82, 4ος Όροφος</p>
+      <p>Θεσσαλονίκη 546 22</p><br>
+      <p><strong>Τηλ:</strong> +30 2310 222 333</p>
+      <p><strong>Fax:</strong> +30 2310 222 334</p>
+      <p><strong>Email:</strong> info@papadopoulos-law.gr</p><br>
+      <p><strong>Δευτ-Παρ:</strong> 09:00 – 17:00</p>
+      <p><strong>Σαβ:</strong> Κατόπιν ραντεβού</p>
+    </div>
+    <div class="map2">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3027!2d22.943!3d40.634!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14a838f41428e0ed%3A0x9bae715b8d574a9!2sThessaloniki!5e0!3m2!1sel!2sgr!4v1" allowfullscreen loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="fl">Παπαδόπουλος & Συνεργάτες</div>
+  <p>© 2026 Παπαδόπουλος & Συνεργάτες — Designed by ATC Digital Craft</p>
+</footer>
+</body>
+</html>

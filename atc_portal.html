@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ATC Digital Craft — Demo Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black: #0B0B0C;
+  --dark: #1A1A1D;
+  --gold: #C6A96B;
+  --gold-light: #D4B97A;
+  --cream: #D6CFC7;
+  --white: #F5F3EF;
+  --card-bg: #141416;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* PORTAL */
+#portal {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.portal-header {
+  padding: 2rem 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(198,169,107,0.15);
+  position: sticky;
+  top: 0;
+  background: rgba(11,11,12,0.95);
+  backdrop-filter: blur(20px);
+  z-index: 100;
+}
+
+.portal-logo img {
+  height: 44px;
+  width: auto;
+}
+
+.portal-badge {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  text-transform: uppercase;
+  border: 1px solid rgba(198,169,107,0.3);
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+}
+
+.portal-hero {
+  padding: 5rem 3rem 3rem;
+  text-align: center;
+  position: relative;
+}
+
+.portal-hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(198,169,107,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.portal-hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 1.2rem;
+}
+
+.portal-hero h1 span {
+  background: linear-gradient(135deg, #C6A96B, #E8D5A3, #C6A96B);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.portal-hero p {
+  color: var(--cream);
+  font-size: 1.1rem;
+  max-width: 560px;
+  margin: 0 auto 3rem;
+  opacity: 0.75;
+  line-height: 1.7;
+}
+
+.gold-line {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 0 auto 3rem;
+}
+
+/* GRID */
+.demos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1.5rem;
+  padding: 0 3rem 4rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.demo-card {
+  background: var(--card-bg);
+  border: 1px solid rgba(198,169,107,0.12);
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  position: relative;
+}
+
+.demo-card:hover {
+  border-color: rgba(198,169,107,0.5);
+  transform: translateY(-6px);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(198,169,107,0.15);
+}
+
+.demo-card-preview {
+  height: 220px;
+  position: relative;
+  overflow: hidden;
+}
+
+.demo-card-preview iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  pointer-events: none;
+  transform: scale(1);
+  transform-origin: top left;
+}
+
+.preview-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 60%, var(--card-bg));
+  z-index: 1;
+}
+
+.demo-card-body {
+  padding: 1.4rem 1.6rem 1.6rem;
+}
+
+.demo-tag {
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.demo-card-body h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+  color: var(--white);
+}
+
+.demo-card-body p {
+  font-size: 0.85rem;
+  color: rgba(214,207,199,0.6);
+  line-height: 1.6;
+  margin-bottom: 1.2rem;
+}
+
+.demo-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-decoration: none;
+  transition: gap 0.3s;
+}
+
+.demo-btn:hover { gap: 0.8rem; }
+.demo-btn svg { transition: transform 0.3s; }
+.demo-btn:hover svg { transform: translateX(3px); }
+
+/* FULLSCREEN VIEWER */
+#viewer {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: var(--black);
+  z-index: 1000;
+  flex-direction: column;
+}
+
+#viewer.active { display: flex; }
+
+.viewer-bar {
+  padding: 0.8rem 1.5rem;
+  background: var(--dark);
+  border-bottom: 1px solid rgba(198,169,107,0.2);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+.viewer-back {
+  background: none;
+  border: 1px solid rgba(198,169,107,0.3);
+  color: var(--gold);
+  padding: 0.5rem 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.viewer-back:hover {
+  background: rgba(198,169,107,0.1);
+  border-color: var(--gold);
+}
+
+.viewer-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  color: var(--cream);
+  flex: 1;
+}
+
+.viewer-tag {
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid rgba(198,169,107,0.3);
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+}
+
+.viewer-frame {
+  flex: 1;
+  border: none;
+  width: 100%;
+}
+
+/* FOOTER */
+.portal-footer {
+  padding: 2rem 3rem;
+  border-top: 1px solid rgba(198,169,107,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+}
+
+.portal-footer p {
+  font-size: 0.8rem;
+  color: rgba(214,207,199,0.4);
+}
+
+.portal-footer a {
+  color: var(--gold);
+  text-decoration: none;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+}
+
+@media (max-width: 768px) {
+  .demos-grid { grid-template-columns: 1fr; padding: 0 1.2rem 3rem; }
+  .portal-hero { padding: 3rem 1.2rem 2rem; }
+  .portal-header { padding: 1.2rem; }
+}
+
+/* ANIMATIONS */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.demo-card {
+  animation: fadeInUp 0.6s ease both;
+}
+.demo-card:nth-child(1) { animation-delay: 0.05s; }
+.demo-card:nth-child(2) { animation-delay: 0.1s; }
+.demo-card:nth-child(3) { animation-delay: 0.15s; }
+.demo-card:nth-child(4) { animation-delay: 0.2s; }
+.demo-card:nth-child(5) { animation-delay: 0.25s; }
+.demo-card:nth-child(6) { animation-delay: 0.3s; }
+.demo-card:nth-child(7) { animation-delay: 0.35s; }
+.demo-card:nth-child(8) { animation-delay: 0.4s; }
+</style>
+</head>
+<body>
+
+<div id="portal">
+  <header class="portal-header">
+    <div class="portal-logo">
+      <img src="C:\Users\marag\Desktop\ATC_PORTAL_SERVER\ChatGPT Image May 10, 2026, 01_17_08 PM.png"    /div>
+    <span class="portal-badge">Demo Portfolio</span>
+  </header>
+
+  <div class="portal-hero">
+    <h1>Δείγματα <span>Δουλειάς</span><br>μας</h1>
+    <p>Κάθε site είναι πλήρως λειτουργικό demo — φωτογραφίες, κείμενα, φόρμες, Google Maps και πολλά άλλα.</p>
+    <div class="gold-line"></div>
+  </div>
+
+  <div class="demos-grid">
+
+    <div class="demo-card" onclick="openDemo('restaurant')">
+      <div class="demo-card-preview">
+        <div style="height:100%;background:linear-gradient(135deg,#1a0a00,#3d1a00);display:flex;align-items:center;justify-content:center;">
+          <div style="text-align:center;color:#C6A96B;font-family:'Playfair Display',serif;">
+            <div style="font-size:3rem;margin-bottom:0.5rem;">🍷</div>
+            <div style="font-size:1.4rem;font-weight:700;">Taverna Thessaloniki</div>
+            <div style="font-size:0.8rem;opacity:0.6;margin-top:0.3rem;letter-spacing:0.1em">ΕΣΤΙΑΤΟΡΙΟ</div>
+          </div>
+        </div>
+        <div class="preview-overlay"></div>
+      </div>
+      <div class="demo-card-body">
+        <span class="demo-tag">Εστιατόριο / Καφέ</span>
+        <h3>Taverna Thessaloniki</h3>
+        <p>Luxury restaurant site με menu, κρατήσεις, gallery και χάρτη.</p>
+        <span class="demo-btn">Δες το Demo <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+      </div>
+    </div>
+
+    <div class="demo-card" onclick="openDemo('realestate')">
+      <div class="demo-card-preview">
+        <div style="height:100%;background:linear-gradient(135deg,#0a1628,#1a3a5c);display:flex;align-items:center;justify-content:center;">
+          <div style="text-align:center;color:#C6A96B;font-family:'Playfair Display',serif;">
+            <div style="font-size:3rem;margin-bottom:0.5rem;">🏛️</div>
+            <div style="font-size:1.4rem;font-weight:700;">Prestige Properties</div>
+            <div style="font-size:0.8rem;opacity:0.6;margin-top:0.3rem;letter-spacing:0.1em">REAL ESTATE</div>
+          </div>
+        </div>
+        <div class="preview-overlay"></div>
+      </div>
+      <div class="demo-card-body">
+        <span class="demo-tag">Real Estate</span>
+        <h3>Prestige Properties</h3>
+        <p>Premium ακίνητα με listings, φίλτρα αναζήτησης και φόρμα εκδήλωσης ενδιαφέροντος.</p>
+        <span class="demo-btn">Δες το Demo <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+      </div>
+    </div>
+
+    <div class="demo-card" onclick="openDemo('lawyer')">
+      <div class="demo-card-preview">
+        <div style="height:100%;background:linear-gradient(135deg,#0d0d0d,#1a1a2e);display:flex;align-items:center;justify-content:center;">
+          <div style="text-align:center;color:#C6A96B;font-family:'Playfair Display',serif;">
+            <div style="font-size:3rem;margin-bottom:0.5rem;">⚖️</div>
+            <div style="font-size:1.4rem;font-weight:700;">Παπαδόπουλος & Συνεργάτες</div>
+            <div style="font-size:0.8rem;opacity:0.6;margin-top:0.3rem;letter-spacing:0.1em">ΔΙΚΗΓΟΡΙΚΟ ΓΡΑΦΕΙΟ</div>
+          </div>
+        </div>
+        <div class="preview-overlay"></div>
+      </div>
+      <div class="demo-card-body">
+        <span class="demo-tag">Δικηγόρος / Λογιστής</span>
+        <h3>Παπαδόπουλος & Συνεργάτες</h3>
+        <p>Επαγγελματικό δικηγορικό γραφείο με υπηρεσίες, ομάδα και online ραντεβού.</p>
+        <span class="demo-btn">Δες το Demo <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+      </div>
+    </div>
+
+    <div class="demo-card" onclick="openDemo('clinic')">
+      <div class="demo-card-preview">
+        <div style="height:100%;background:linear-gradient(135deg,#001a1a,#003333);display:flex;align-items:center;justify-content:center;">
+          <div style="text-align:center;color:#C6A96B;font-family:'Playfair Display',serif;">
+            <div style="font-size:3rem;margin-bottom:0.5rem;">🩺</div>
+            <div style="font-size:1.4rem;font-weight:700;">MedCenter Clinic</div>
+            <div style="font-size:0.8rem;opacity:0.6;margin-top:0.3rem;letter-spacing:0.1em">ΙΑΤΡΙΚΟ ΚΕΝΤΡΟ</div>
+          </div>
+        </div>
+        <div class="preview-overlay"></div>
+      </div>
+      <div class="demo-card-body">
+        <span class="demo-tag">Κλινική / Γιατρός</span>
+        <h3>MedCenter Clinic</h3>
+        <p>Ιατρικό κέντρο με ειδικότητες, γιατρούς, κλείσιμο ραντεβού online και FAQ.</p>
+        <span class="demo-btn">Δες το Demo <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+      </div>
+    </div>
+
+    <div class="demo-card" onclick="openDemo('gym')">
+      <div class="demo-card-preview">
+        <div style="height:100%;background:linear-gradient(135deg,#0d0500,#2a0a0a);display:flex;align-items:center;justify-content:center;">
+          <div style="text-align:center;color:#C6A96B;font-family:'Playfair Display',serif;">
+            <div style="font-size:3rem;margin-bottom:0.5rem;">💪</div>
+            <div style="font-size:1.4rem;font-weight:700;">APEX Fitness</div>
+            <div style="font-size:0.8rem;opacity:0.6;margin-top:0.3rem;letter-spacing:0.1em">ΓΥΜΝΑΣΤΗΡΙΟ</div>
+          </div>
+        </div>
+        <div class="preview-overlay"></div>
+      </div>
+      <div class="demo-card-body">
+        <span class="demo-tag">Γυμναστήριο / Fitness</span>
+        <h3>APEX Fitness</h3>
+        <p>High-energy gym site με προγράμματα, personal trainers, τιμές και δωρεάν δοκιμή.</p>
+        <span class="demo-btn">Δες το Demo <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+      </div>
+    </div>
+
+    <div class="demo-card" onclick="openDemo('hotel')">
+      <div class="demo-card-preview">
+        <div style="height:100%;background:linear-gradient(135deg,#001428,#002244);display:flex;align-items:center;justify-content:center;">
+          <div style="text-align:center;color:#C6A96B;font-family:'Playfair Display',serif;">
+            <div style="font-size:3rem;margin-bottom:0.5rem;">🏨</div>
+            <div style="font-size:1.4rem;font-weight:700;">Olympus Suites</div>
+            <div style="font-size:0.8rem;opacity:0.6;margin-top:0.3rem;letter-spacing:0.1em">ΞΕΝΟΔΟΧΕΙΟ</div>
+          </div>
+        </div>
+        <div class="preview-overlay"></div>
+      </div>
+      <div class="demo-card-body">
+        <span class="demo-tag">Ξενοδοχείο / Τουρισμός</span>
+        <h3>Olympus Suites</h3>
+        <p>Boutique hotel με δωμάτια, gallery, amenities, κρατήσεις και reviews.</p>
+        <span class="demo-btn">Δες το Demo <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+      </div>
+    </div>
+
+    <div class="demo-card" onclick="openDemo('eshop')">
+      <div class="demo-card-preview">
+        <div style="height:100%;background:linear-gradient(135deg,#1a0022,#2d0040);display:flex;align-items:center;justify-content:center;">
+          <div style="text-align:center;color:#C6A96B;font-family:'Playfair Display',serif;">
+            <div style="font-size:3rem;margin-bottom:0.5rem;">👗</div>
+            <div style="font-size:1.4rem;font-weight:700;">LUMIÈRE Fashion</div>
+            <div style="font-size:0.8rem;opacity:0.6;margin-top:0.3rem;letter-spacing:0.1em">E-SHOP ΜΟΔΑ</div>
+          </div>
+        </div>
+        <div class="preview-overlay"></div>
+      </div>
+      <div class="demo-card-body">
+        <span class="demo-tag">E-shop / Μόδα</span>
+        <h3>LUMIÈRE Fashion</h3>
+        <p>Online fashion store με προϊόντα, φίλτρα, καλάθι αγορών και checkout.</p>
+        <span class="demo-btn">Δες το Demo <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+      </div>
+    </div>
+
+    <div class="demo-card" onclick="openDemo('construction')">
+      <div class="demo-card-preview">
+        <div style="height:100%;background:linear-gradient(135deg,#0a0800,#1a1400);display:flex;align-items:center;justify-content:center;">
+          <div style="text-align:center;color:#C6A96B;font-family:'Playfair Display',serif;">
+            <div style="font-size:3rem;margin-bottom:0.5rem;">🏗️</div>
+            <div style="font-size:1.4rem;font-weight:700;">BuildTech Constructions</div>
+            <div style="font-size:0.8rem;opacity:0.6;margin-top:0.3rem;letter-spacing:0.1em">ΚΑΤΑΣΚΕΥΕΣ</div>
+          </div>
+        </div>
+        <div class="preview-overlay"></div>
+      </div>
+      <div class="demo-card-body">
+        <span class="demo-tag">Κατασκευές / Τεχνικές Υπηρεσίες</span>
+        <h3>BuildTech Constructions</h3>
+        <p>Κατασκευαστική εταιρεία με έργα portfolio, υπηρεσίες και αίτηση προσφοράς.</p>
+        <span class="demo-btn">Δες το Demo <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="portal-footer">
+    <p>© 2026 ATC Digital Craft — Θεσσαλονίκη, Ελλάδα</p>
+    <a href="tel:+302310000000">Επικοινωνία</a>
+  </footer>
+</div>
+
+<!-- FULLSCREEN VIEWER -->
+<div id="viewer">
+  <div class="viewer-bar">
+    <button class="viewer-back" onclick="closeDemo()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Πίσω
+    </button>
+    <span class="viewer-title" id="viewer-title"></span>
+    <span class="viewer-tag" id="viewer-tag"></span>
+  </div>
+  <iframe class="viewer-frame" id="viewer-frame"></iframe>
+</div>
+
+<script>
+const demos = {
+  restaurant: { title: 'Taverna Thessaloniki', tag: 'Εστιατόριο', src: 'demo_restaurant.html' },
+  realestate: { title: 'Prestige Properties', tag: 'Real Estate', src: 'demo_realestate.html' },
+  lawyer: { title: 'Παπαδόπουλος & Συνεργάτες', tag: 'Δικηγόρος', src: 'demo_lawyer.html' },
+  clinic: { title: 'MedCenter Clinic', tag: 'Κλινική', src: 'demo_clinic.html' },
+  gym: { title: 'APEX Fitness', tag: 'Γυμναστήριο', src: 'demo_gym.html' },
+  hotel: { title: 'Olympus Suites', tag: 'Ξενοδοχείο', src: 'demo_hotel.html' },
+  eshop: { title: 'LUMIÈRE Fashion', tag: 'E-shop', src: 'demo_eshop.html' },
+  construction: { title: 'BuildTech Constructions', tag: 'Κατασκευές', src: 'demo_construction.html' }
+};
+
+function openDemo(id) {
+  const d = demos[id];
+  document.getElementById('viewer-title').textContent = d.title;
+  document.getElementById('viewer-tag').textContent = d.tag;
+  document.getElementById('viewer-frame').src = d.src;
+  document.getElementById('viewer').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeDemo() {
+  document.getElementById('viewer').classList.remove('active');
+  document.getElementById('viewer-frame').src = '';
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDemo(); });
+</script>
+
+</body>
+</html>

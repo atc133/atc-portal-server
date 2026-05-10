@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MedCenter Clinic — Ιατρικό Κέντρο</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f7f9f8;--dark:#06120e;--green:#0a2e20;--teal:#0d4a32;--accent:#1a7a50;--gold:#C6A96B;--white:#ffffff;--text:#4a5e55;--border:#d0ddd7;}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--dark);font-family:'Source Sans 3',sans-serif;}
+nav{position:fixed;top:0;width:100%;z-index:100;background:var(--white);border-bottom:1px solid var(--border);padding:0.9rem 3rem;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 20px rgba(0,0,0,0.06);}
+.nav-brand{display:flex;align-items:center;gap:1rem;}
+.nav-icon{width:40px;height:40px;background:var(--teal);border-radius:8px;display:flex;align-items:center;justify-content:center;color:white;font-size:1.2rem;}
+.nav-name{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--dark);}
+.nav-tagline{font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text);display:block;}
+.nav-links{display:flex;gap:2rem;}
+.nav-links a{font-size:0.85rem;color:var(--text);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:var(--accent);}
+.nav-cta{background:var(--teal);color:white;padding:0.65rem 1.6rem;font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;border:none;cursor:pointer;border-radius:6px;font-family:'Source Sans 3',sans-serif;font-weight:600;transition:all 0.2s;}
+.nav-cta:hover{background:var(--accent);}
+
+.hero{min-height:100vh;background:linear-gradient(135deg,var(--dark) 0%,var(--green) 40%,var(--teal) 100%);display:flex;align-items:center;padding:8rem 3rem 4rem;position:relative;overflow:hidden;}
+.hero::after{content:'';position:absolute;right:-100px;top:50%;transform:translateY(-50%);width:500px;height:500px;border-radius:50%;border:60px solid rgba(255,255,255,0.04);}
+.hero::before{content:'';position:absolute;right:200px;top:20%;width:200px;height:200px;border-radius:50%;border:30px solid rgba(255,255,255,0.03);}
+.hero-content{max-width:620px;position:relative;z-index:1;}
+.hero-badge{display:inline-flex;align-items:center;gap:0.6rem;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.8);font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;padding:0.5rem 1.2rem;border-radius:20px;margin-bottom:2rem;}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,5vw,4.5rem);color:white;line-height:1.1;margin-bottom:1.5rem;}
+.hero h1 span{color:#7dd9a8;}
+.hero p{font-size:1rem;color:rgba(255,255,255,0.75);line-height:1.8;margin-bottom:3rem;max-width:500px;}
+.hero-stats{display:flex;gap:3rem;margin-bottom:3rem;}
+.hstat-n{font-family:'Playfair Display',serif;font-size:2.2rem;color:white;}
+.hstat-l{font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-top:0.2rem;}
+.btn-white{background:white;color:var(--dark);padding:1rem 2.5rem;font-size:0.82rem;letter-spacing:0.12em;text-transform:uppercase;font-weight:700;border:none;cursor:pointer;border-radius:6px;font-family:'Source Sans 3',sans-serif;transition:all 0.2s;}
+.btn-white:hover{background:#edf5f0;transform:translateY(-2px);}
+.btn-outline-w{background:transparent;color:white;padding:1rem 2rem;font-size:0.82rem;letter-spacing:0.12em;text-transform:uppercase;border:2px solid rgba(255,255,255,0.3);cursor:pointer;border-radius:6px;font-family:'Source Sans 3',sans-serif;transition:all 0.2s;margin-left:1rem;}
+.btn-outline-w:hover{border-color:white;}
+
+/* SPECIALTIES */
+.specs-section{padding:6rem 3rem;max-width:1200px;margin:0 auto;}
+.sec-tag{font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--accent);margin-bottom:0.8rem;font-weight:600;}
+.sec-h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,3vw,3rem);margin-bottom:0.5rem;}
+.sec-desc{font-size:0.95rem;color:var(--text);margin-bottom:3rem;}
+.specs-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;}
+.spec-card{background:white;border:1px solid var(--border);border-radius:12px;padding:2rem;text-align:center;transition:all 0.3s;box-shadow:0 2px 12px rgba(0,0,0,0.05);}
+.spec-card:hover{border-color:var(--accent);box-shadow:0 8px 30px rgba(26,122,80,0.12);transform:translateY(-4px);}
+.spec-icon{font-size:2.5rem;margin-bottom:1rem;}
+.spec-name{font-family:'Playfair Display',serif;font-size:1.1rem;margin-bottom:0.5rem;}
+.spec-desc{font-size:0.8rem;color:var(--text);line-height:1.6;}
+
+/* DOCTORS */
+.doctors-section{background:var(--dark);padding:6rem 0;}
+.doctors-inner{max-width:1200px;margin:0 auto;padding:0 3rem;}
+.doctors-inner .sec-h2,.doctors-inner .sec-tag{color:white;}
+.doctors-inner .sec-desc{color:rgba(255,255,255,0.55);}
+.docs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3rem;}
+.doc-card{background:var(--green);border:1px solid rgba(255,255,255,0.08);border-radius:12px;overflow:hidden;transition:all 0.3s;}
+.doc-card:hover{transform:translateY(-4px);}
+.doc-img{height:260px;overflow:hidden;}
+.doc-img img{width:100%;height:100%;object-fit:cover;object-position:top;}
+.doc-body{padding:1.4rem;}
+.doc-name{font-family:'Playfair Display',serif;font-size:1.15rem;color:white;margin-bottom:0.2rem;}
+.doc-spec{font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:#7dd9a8;margin-bottom:0.6rem;}
+.doc-info{font-size:0.82rem;color:rgba(255,255,255,0.55);}
+
+/* APPOINTMENT */
+.appt2{background:white;padding:6rem 0;border-top:1px solid var(--border);}
+.appt2-inner{max-width:750px;margin:0 auto;padding:0 3rem;}
+.appt-form{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2.5rem;}
+.full-span{grid-column:span 2;}
+.field{display:flex;flex-direction:column;gap:0.4rem;}
+.field label{font-size:0.68rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);font-weight:600;}
+.field input,.field select,.field textarea{background:var(--bg);border:1px solid var(--border);color:var(--dark);padding:0.85rem 1rem;font-family:'Source Sans 3',sans-serif;font-size:0.9rem;outline:none;border-radius:6px;transition:border-color 0.2s;}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--accent);}
+.field textarea{resize:vertical;min-height:100px;}
+.appt-submit{width:100%;background:var(--teal);color:white;padding:1.1rem;font-size:0.85rem;letter-spacing:0.18em;text-transform:uppercase;font-weight:700;border:none;cursor:pointer;border-radius:6px;margin-top:1rem;font-family:'Source Sans 3',sans-serif;transition:all 0.2s;}
+.appt-submit:hover{background:var(--accent);}
+
+/* FAQ */
+.faq-section{padding:6rem 3rem;max-width:900px;margin:0 auto;}
+.faq-item{border:1px solid var(--border);border-radius:8px;margin-bottom:0.8rem;overflow:hidden;}
+.faq-q{padding:1.2rem 1.5rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-weight:500;background:white;}
+.faq-q:hover{background:#f0f7f4;}
+.faq-a{padding:0 1.5rem 1.2rem;font-size:0.9rem;color:var(--text);line-height:1.7;background:white;display:none;}
+.faq-item.open .faq-a{display:block;}
+.faq-item.open .faq-icon{transform:rotate(45deg);}
+.faq-icon{transition:transform 0.3s;color:var(--accent);font-size:1.5rem;line-height:1;}
+
+/* LOCATION */
+.loc3-section{background:var(--dark);padding:6rem 0;}
+.loc3-inner{max-width:1200px;margin:0 auto;padding:0 3rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
+.loc3-info .sec-h2,.loc3-info .sec-tag{color:white;}
+.loc3-info p{font-size:0.9rem;color:rgba(255,255,255,0.6);line-height:1.8;margin-bottom:0.5rem;}
+.loc3-info strong{color:white;}
+.map3{border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,0.1);}
+.map3 iframe{width:100%;height:320px;border:none;filter:grayscale(50%);}
+
+footer{background:#030a07;padding:3rem;text-align:center;border-top:1px solid rgba(255,255,255,0.05);}
+footer p{font-size:0.8rem;color:rgba(255,255,255,0.25);}
+footer .fl{font-family:'Playfair Display',serif;font-size:1.4rem;color:#7dd9a8;margin-bottom:0.8rem;}
+
+@media(max-width:768px){nav{padding:1rem;}.nav-links{display:none;}section,.specs-section,.faq-section{padding:3.5rem 1.2rem;}.specs-grid,.docs-grid,.appt-form,.loc3-inner{grid-template-columns:1fr;}.full-span{grid-column:span 1;}.hero{padding:7rem 1.2rem 3rem;}.doctors-inner,.appt2-inner,.loc3-inner{padding:0 1.2rem;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">
+    <div class="nav-icon">🩺</div>
+    <div>
+      <span class="nav-name">MedCenter Clinic</span>
+      <span class="nav-tagline">Ιατρικό Κέντρο Θεσσαλονίκης</span>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#specialties">Ειδικότητες</a>
+    <a href="#doctors">Γιατροί</a>
+    <a href="#appointment">Ραντεβού</a>
+    <a href="#faq">FAQ</a>
+  </div>
+  <button class="nav-cta" onclick="document.getElementById('appointment').scrollIntoView({behavior:'smooth'})">Κλείστε Ραντεβού</button>
+</nav>
+
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">✓ Πιστοποιημένο Ιατρικό Κέντρο</div>
+    <h1>Η Υγεία σας,<br><span>Αόρατη Προτεραιότητα</span></h1>
+    <p>Σύγχρονο ιατρικό κέντρο με εξειδικευμένους γιατρούς, προηγμένο εξοπλισμό και άμεση εξυπηρέτηση στη Θεσσαλονίκη.</p>
+    <div class="hero-stats">
+      <div><div class="hstat-n">15+</div><div class="hstat-l">Ειδικοί</div></div>
+      <div><div class="hstat-n">8.000+</div><div class="hstat-l">Ασθενείς</div></div>
+      <div><div class="hstat-n">12</div><div class="hstat-l">Χρόνια</div></div>
+    </div>
+    <button class="btn-white" onclick="document.getElementById('appointment').scrollIntoView({behavior:'smooth'})">Κλείστε Ραντεβού</button>
+    <button class="btn-outline-w" onclick="document.getElementById('specialties').scrollIntoView({behavior:'smooth'})">Ειδικότητες</button>
+  </div>
+</div>
+
+<!-- SPECIALTIES -->
+<div class="specs-section" id="specialties">
+  <div class="sec-tag">Medical Specialties</div>
+  <h2 class="sec-h2">Ειδικότητες</h2>
+  <p class="sec-desc">Πλήρης κάλυψη ιατρικών αναγκών κάτω από μία στέγη</p>
+  <div class="specs-grid">
+    <div class="spec-card"><div class="spec-icon">❤️</div><div class="spec-name">Καρδιολογία</div><div class="spec-desc">Προληπτικός έλεγχος, ΗΚΓ, Holter, Echo</div></div>
+    <div class="spec-card"><div class="spec-icon">🫁</div><div class="spec-name">Πνευμονολογία</div><div class="spec-desc">Σπιρομέτρηση, διαταραχές ύπνου, άσθμα</div></div>
+    <div class="spec-card"><div class="spec-icon">🧠</div><div class="spec-name">Νευρολογία</div><div class="spec-desc">Πονοκέφαλοι, επιληψία, ζάλη, μούδιασμα</div></div>
+    <div class="spec-card"><div class="spec-icon">🦴</div><div class="spec-name">Ορθοπεδική</div><div class="spec-desc">Αρθρίτιδα, αθλητικές κακώσεις, σπονδυλική</div></div>
+  </div>
+</div>
+
+<!-- DOCTORS -->
+<div class="doctors-section" id="doctors">
+  <div class="doctors-inner">
+    <div class="sec-tag">Medical Team</div>
+    <h2 class="sec-h2">Οι Γιατροί μας</h2>
+    <p class="sec-desc">Εξειδικευμένοι επαγγελματίες με διεθνή εκπαίδευση</p>
+    <div class="docs-grid">
+      <div class="doc-card">
+        <div class="doc-img"><img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&q=80" alt="doctor" loading="lazy"></div>
+        <div class="doc-body">
+          <div class="doc-name">Δρ. Νίκος Κωνσταντίνου</div>
+          <div class="doc-spec">Καρδιολόγος</div>
+          <div class="doc-info">MD, PhD · Univ. of Athens · 18 χρόνια εμπειρίας</div>
+        </div>
+      </div>
+      <div class="doc-card">
+        <div class="doc-img"><img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&q=80" alt="doctor" loading="lazy"></div>
+        <div class="doc-body">
+          <div class="doc-name">Δρ. Αντωνία Βασιλείου</div>
+          <div class="doc-spec">Νευρολόγος</div>
+          <div class="doc-info">MD · AUTH · 12 χρόνια εμπειρίας</div>
+        </div>
+      </div>
+      <div class="doc-card">
+        <div class="doc-img"><img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400&q=80" alt="doctor" loading="lazy"></div>
+        <div class="doc-body">
+          <div class="doc-name">Δρ. Σπύρος Δημητρίου</div>
+          <div class="doc-spec">Ορθοπεδικός</div>
+          <div class="doc-info">MD · Imperial College London · 15 χρόνια</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- APPOINTMENT -->
+<div class="appt2" id="appointment">
+  <div class="appt2-inner">
+    <div class="sec-tag">Book Online</div>
+    <h2 class="sec-h2">Κλείστε Ραντεβού</h2>
+    <p class="sec-desc">Άμεση εξυπηρέτηση — επιβεβαίωση εντός 2 ωρών</p>
+    <div class="appt-form">
+      <div class="field"><label>Όνομα *</label><input type="text" placeholder="Ονοματεπώνυμο"></div>
+      <div class="field"><label>Τηλέφωνο *</label><input type="tel" placeholder="+30 6900 000000"></div>
+      <div class="field"><label>Email</label><input type="email" placeholder="email@example.com"></div>
+      <div class="field"><label>Ειδικότητα</label>
+        <select><option>Καρδιολογία</option><option>Πνευμονολογία</option><option>Νευρολογία</option><option>Ορθοπεδική</option></select>
+      </div>
+      <div class="field"><label>Επιθυμητή Ημερομηνία</label><input type="date"></div>
+      <div class="field"><label>Επιθυμητή Ώρα</label>
+        <select><option>Πρωί (8-12)</option><option>Μεσημέρι (12-16)</option><option>Απόγευμα (16-20)</option></select>
+      </div>
+      <div class="field full-span"><label>Συμπτώματα / Σημειώσεις</label><textarea placeholder="Περιγράψτε σύντομα το πρόβλημά σας..."></textarea></div>
+    </div>
+    <button class="appt-submit" onclick="alert('Ευχαριστούμε! Θα επιβεβαιώσουμε το ραντεβού σας εντός 2 ωρών.')">Επιβεβαίωση Ραντεβού</button>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="faq-section" id="faq">
+  <div class="sec-tag">FAQ</div>
+  <h2 class="sec-h2">Συχνές Ερωτήσεις</h2>
+  <div style="margin-top:2.5rem;">
+    <div class="faq-item open">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Χρειάζομαι παραπομπή για να κλείσω ραντεβού; <span class="faq-icon">+</span></div>
+      <div class="faq-a">Όχι, μπορείτε να κλείσετε ραντεβού απευθείας χωρίς παραπομπή για όλες τις ειδικότητες. Αρκεί ένα τηλεφώνημα ή η online φόρμα.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Συνεργάζεστε με ασφαλιστικές; <span class="faq-icon">+</span></div>
+      <div class="faq-a">Ναι, συνεργαζόμαστε με τις περισσότερες ασφαλιστικές εταιρείες. Επικοινωνήστε μαζί μας για να ελέγξετε αν καλύπτεστε.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Πόσο γρήγορα μπορώ να πάρω ραντεβού; <span class="faq-icon">+</span></div>
+      <div class="faq-a">Σε περισσότερες περιπτώσεις, έχουμε διαθεσιμότητα εντός 1-3 εργάσιμων ημερών. Για επείγοντα περιστατικά, γίνεται εντός της ίδιας ημέρας.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Υπάρχει χώρος στάθμευσης; <span class="faq-icon">+</span></div>
+      <div class="faq-a">Ναι, διαθέτουμε ιδιωτικό parking για τους ασθενείς μας. Το parking είναι δωρεάν για έως 2 ώρες.</div>
+    </div>
+  </div>
+</div>
+
+<!-- LOCATION -->
+<div class="loc3-section" id="location">
+  <div class="loc3-inner">
+    <div class="loc3-info">
+      <div class="sec-tag">Location</div>
+      <h2 class="sec-h2">Πού θα μας Βρείτε</h2>
+      <div style="margin-top:1.5rem;">
+        <p><strong>MedCenter Clinic</strong></p>
+        <p>25ης Μαρτίου 44</p>
+        <p>Θεσσαλονίκη 542 48</p><br>
+        <p><strong>Τηλ:</strong> +30 2310 555 666</p>
+        <p><strong>Email:</strong> info@medcenter.gr</p><br>
+        <p><strong>Δευτ-Παρ:</strong> 08:00 – 20:00</p>
+        <p><strong>Σάββατο:</strong> 09:00 – 14:00</p>
+      </div>
+    </div>
+    <div class="map3">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3027!2d22.950!3d40.633!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14a838f41428e0ed%3A0x9bae715b8d574a9!2sThessaloniki!5e0!3m2!1sel!2sgr!4v1" allowfullscreen loading="lazy"></iframe>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="fl">MedCenter Clinic</div>
+  <p>© 2026 MedCenter Clinic — Designed by ATC Digital Craft</p>
+</footer>
+</body>
+</html>

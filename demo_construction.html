@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BuildTech Constructions — Κατασκευαστική Εταιρεία</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;500;600;700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0c0b08;--card:#141310;--yellow:#D4A017;--yellow2:#F0B830;--white:#f4f2ed;--text:#9a9282;--border:rgba(212,160,23,0.15);}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--white);font-family:'Barlow',sans-serif;}
+
+nav{position:fixed;top:0;width:100%;z-index:100;padding:1rem 3rem;display:flex;align-items:center;justify-content:space-between;background:rgba(12,11,8,0.97);backdrop-filter:blur(20px);border-bottom:2px solid var(--yellow);}
+.nav-brand{display:flex;align-items:center;gap:1rem;}
+.nav-icon{width:42px;height:42px;background:var(--yellow);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:var(--bg);letter-spacing:0.05em;}
+.nav-name{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:0.12em;color:var(--white);}
+.nav-sub{font-size:0.58rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--text);display:block;margin-top:-4px;}
+.nav-links{display:flex;gap:2.5rem;}
+.nav-links a{font-size:0.8rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:var(--yellow);}
+.nav-cta{background:var(--yellow);color:var(--bg);padding:0.65rem 1.8rem;font-family:'Barlow Condensed',sans-serif;font-size:0.85rem;letter-spacing:0.18em;text-transform:uppercase;font-weight:700;border:none;cursor:pointer;transition:all 0.2s;}
+.nav-cta:hover{background:var(--yellow2);}
+
+/* HERO */
+.hero{min-height:100vh;background:linear-gradient(to right,rgba(12,11,8,0.92) 45%,rgba(12,11,8,0.5)),url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&q=80') center/cover;display:flex;align-items:center;padding:8rem 3rem 4rem;position:relative;overflow:hidden;}
+.hero-diagonal{position:absolute;right:0;top:0;bottom:0;width:45%;background:linear-gradient(to left,transparent,rgba(12,11,8,0.5));pointer-events:none;}
+.hero-content{max-width:700px;position:relative;z-index:1;}
+.hero-eyebrow{display:flex;align-items:center;gap:1.2rem;font-size:0.7rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--yellow);margin-bottom:2rem;}
+.hero-eyebrow::after{content:'';display:block;flex:1;max-width:80px;height:2px;background:var(--yellow);}
+.hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(5rem,12vw,10rem);line-height:0.9;letter-spacing:0.04em;margin-bottom:1.5rem;}
+.hero h1 .accent{color:var(--yellow);display:block;}
+.hero-desc{font-size:1rem;color:rgba(244,242,237,0.65);line-height:1.9;margin-bottom:3rem;max-width:520px;}
+.hero-stats{display:flex;gap:3.5rem;margin-bottom:3.5rem;padding-bottom:3rem;border-bottom:1px solid var(--border);}
+.hs-val{font-family:'Bebas Neue',sans-serif;font-size:3rem;color:var(--yellow);line-height:1;}
+.hs-label{font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--text);margin-top:0.3rem;}
+.hero-actions{display:flex;gap:1.2rem;}
+.btn-yellow{background:var(--yellow);color:var(--bg);padding:1.1rem 3rem;font-family:'Barlow Condensed',sans-serif;font-size:0.9rem;letter-spacing:0.22em;text-transform:uppercase;font-weight:700;border:none;cursor:pointer;transition:all 0.3s;}
+.btn-yellow:hover{background:var(--yellow2);transform:translateY(-2px);box-shadow:0 12px 40px rgba(212,160,23,0.3);}
+.btn-outline-y{background:transparent;color:var(--white);padding:1.1rem 2.5rem;font-family:'Barlow Condensed',sans-serif;font-size:0.9rem;letter-spacing:0.22em;text-transform:uppercase;font-weight:600;border:2px solid rgba(255,255,255,0.2);cursor:pointer;transition:all 0.2s;}
+.btn-outline-y:hover{border-color:var(--yellow);color:var(--yellow);}
+
+/* SERVICES */
+section{padding:6rem 3rem;max-width:1200px;margin:0 auto;}
+.sec-eyebrow{font-size:0.65rem;letter-spacing:0.4em;text-transform:uppercase;color:var(--yellow);margin-bottom:0.8rem;}
+.sec-h{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,5vw,5rem);letter-spacing:0.06em;margin-bottom:0.5rem;line-height:1;}
+.sec-desc{font-size:0.9rem;color:var(--text);margin-bottom:3.5rem;}
+
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.service-card{background:var(--card);border:1px solid var(--border);padding:2.2rem;position:relative;overflow:hidden;transition:all 0.35s;}
+.service-card::before{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--yellow);transform:scaleX(0);transform-origin:left;transition:transform 0.4s;}
+.service-card:hover::before{transform:scaleX(1);}
+.service-card:hover{border-color:rgba(212,160,23,0.35);background:rgba(212,160,23,0.03);}
+.service-num{font-family:'Bebas Neue',sans-serif;font-size:3.5rem;color:rgba(212,160,23,0.15);line-height:1;margin-bottom:0.5rem;}
+.service-icon{font-size:2rem;margin-bottom:1rem;}
+.service-name{font-family:'Barlow Condensed',sans-serif;font-size:1.3rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.8rem;color:var(--white);}
+.service-desc{font-size:0.85rem;color:var(--text);line-height:1.7;}
+
+/* PROJECTS */
+.projects-bg{background:var(--card);padding:6rem 0;border-top:1px solid var(--border);}
+.projects-inner{max-width:1200px;margin:0 auto;padding:0 3rem;}
+.projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem;}
+.project-card{position:relative;overflow:hidden;cursor:pointer;}
+.proj-img{height:280px;overflow:hidden;}
+.proj-img img{width:100%;height:100%;object-fit:cover;filter:brightness(0.75);transition:all 0.5s;}
+.project-card:hover .proj-img img{filter:brightness(0.9);transform:scale(1.06);}
+.proj-overlay{position:absolute;inset:0;padding:1.5rem;display:flex;flex-direction:column;justify-content:flex-end;background:linear-gradient(transparent 30%,rgba(12,11,8,0.9));}
+.proj-tag{font-size:0.62rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--yellow);margin-bottom:0.5rem;}
+.proj-name{font-family:'Barlow Condensed',sans-serif;font-size:1.4rem;font-weight:700;text-transform:uppercase;color:white;}
+.proj-location{font-size:0.8rem;color:rgba(255,255,255,0.55);}
+.proj-year{position:absolute;top:1rem;right:1rem;background:var(--yellow);color:var(--bg);font-family:'Barlow Condensed',sans-serif;font-size:0.8rem;letter-spacing:0.15em;font-weight:700;padding:0.3rem 0.8rem;}
+
+/* TEAM */
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:3.5rem;}
+.team-card{background:var(--card);border:1px solid var(--border);overflow:hidden;transition:all 0.3s;}
+.team-card:hover{border-color:rgba(212,160,23,0.4);transform:translateY(-4px);}
+.team-img{height:260px;overflow:hidden;}
+.team-img img{width:100%;height:100%;object-fit:cover;object-position:top;filter:grayscale(20%);transition:all 0.4s;}
+.team-card:hover .team-img img{filter:grayscale(0);}
+.team-body{padding:1.2rem;}
+.team-name{font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;}
+.team-role{font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--yellow);margin-top:0.2rem;}
+
+/* QUOTE FORM */
+.quote-section{background:linear-gradient(135deg,#100e08,#1a1608);padding:6rem 0;border-top:3px solid var(--yellow);}
+.quote-inner{max-width:800px;margin:0 auto;padding:0 3rem;}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2.5rem;}
+.full-col{grid-column:span 2;}
+.fg{display:flex;flex-direction:column;gap:0.4rem;}
+.fg label{font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--yellow);}
+.fg input,.fg select,.fg textarea{background:rgba(255,255,255,0.04);border:1px solid var(--border);color:var(--white);padding:0.85rem 1rem;font-family:'Barlow',sans-serif;font-size:0.9rem;outline:none;transition:border-color 0.2s;}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--yellow);}
+.fg select option{background:var(--card);}
+.fg textarea{resize:vertical;min-height:120px;}
+.quote-submit{width:100%;background:var(--yellow);color:var(--bg);padding:1.2rem;font-family:'Barlow Condensed',sans-serif;font-size:1rem;letter-spacing:0.25em;text-transform:uppercase;font-weight:700;border:none;cursor:pointer;margin-top:1.2rem;transition:all 0.2s;}
+.quote-submit:hover{background:var(--yellow2);}
+
+/* LOCATION */
+.loc-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;margin-top:2.5rem;}
+.li p{font-size:0.9rem;color:var(--text);line-height:1.8;margin-bottom:0.5rem;}
+.li strong{color:var(--white);}
+.map7{border:1px solid var(--border);}
+.map7 iframe{width:100%;height:300px;border:none;filter:grayscale(80%) invert(70%) contrast(1.1);}
+
+footer{background:#060503;padding:3rem;text-align:center;border-top:3px solid var(--yellow);}
+footer .fl{font-family:'Bebas Neue',sans-serif;font-size:2.5rem;letter-spacing:0.12em;color:var(--yellow);margin-bottom:0.5rem;}
+footer p{font-size:0.78rem;color:var(--text);opacity:0.5;}
+
+@media(max-width:768px){nav{padding:1rem;}.nav-links{display:none;}section{padding:4rem 1.2rem;}.services-grid,.projects-grid,.team-grid,.form-grid,.loc-grid{grid-template-columns:1fr;}.full-col{grid-column:span 1;}.hero{padding:7rem 1.2rem 3rem;}.projects-inner,.quote-inner{padding:0 1.2rem;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">
+    <div class="nav-icon">BT</div>
+    <div>
+      <span class="nav-name">BuildTech</span>
+      <span class="nav-sub">Constructions</span>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#services">Υπηρεσίες</a>
+    <a href="#projects">Έργα</a>
+    <a href="#team">Ομάδα</a>
+    <a href="#quote">Προσφορά</a>
+  </div>
+  <button class="nav-cta" onclick="document.getElementById('quote').scrollIntoView({behavior:'smooth'})">Ζητήστε Προσφορά</button>
+</nav>
+
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-eyebrow">Ιδρύθηκε 2005 · Θεσσαλονίκη</div>
+    <h1>BUILD<br><span class="accent">BETTER.</span><br>BUILD<br><span class="accent">RIGHT.</span></h1>
+    <p class="hero-desc">Κατασκευαστική εταιρεία με 20 χρόνια εμπειρίας σε οικοδομικές εργασίες, ανακαινίσεις και τεχνικά έργα στη Βόρεια Ελλάδα.</p>
+    <div class="hero-stats">
+      <div><div class="hs-val">20+</div><div class="hs-label">Χρόνια</div></div>
+      <div><div class="hs-val">350+</div><div class="hs-label">Έργα</div></div>
+      <div><div class="hs-val">85</div><div class="hs-label">Εργαζόμενοι</div></div>
+      <div><div class="hs-val">100%</div><div class="hs-label">Εγγύηση</div></div>
+    </div>
+    <div class="hero-actions">
+      <button class="btn-yellow" onclick="document.getElementById('quote').scrollIntoView({behavior:'smooth'})">Ζητήστε Προσφορά</button>
+      <button class="btn-outline-y" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">Δείτε τα Έργα μας</button>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="sec-eyebrow">What We Do</div>
+  <h2 class="sec-h">Υπηρεσίες</h2>
+  <p class="sec-desc">Πλήρης κάλυψη κατασκευαστικών αναγκών — από τον σχεδιασμό ως την παράδοση</p>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-num">01</div>
+      <div class="service-icon">🏗️</div>
+      <div class="service-name">Νέες Κατασκευές</div>
+      <div class="service-desc">Ανέγερση κτιρίων κατοικιών, επαγγελματικών χώρων και βιομηχανικών εγκαταστάσεων με σύγχρονες μεθόδους.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">02</div>
+      <div class="service-icon">🔨</div>
+      <div class="service-name">Ανακαινίσεις</div>
+      <div class="service-desc">Πλήρης ανακαίνιση διαμερισμάτων, επαγγελματικών χώρων και κτιρίων — κλειδί στο χέρι.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">03</div>
+      <div class="service-icon">🏢</div>
+      <div class="service-name">Εμπορικά Έργα</div>
+      <div class="service-desc">Κατασκευή καταστημάτων, γραφείων, αποθηκών και βιομηχανικών εγκαταστάσεων μεγάλης κλίμακας.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">04</div>
+      <div class="service-icon">🛠️</div>
+      <div class="service-name">Τεχνικές Εγκαταστάσεις</div>
+      <div class="service-desc">Ηλεκτρολογικές, υδραυλικές και μηχανολογικές εγκαταστάσεις από εξειδικευμένους τεχνικούς.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">05</div>
+      <div class="service-icon">🏠</div>
+      <div class="service-name">Εξωτερικοί Χώροι</div>
+      <div class="service-desc">Διαμόρφωση κήπων, αυλών, πισινών, parkings και υπαίθριων χώρων κάθε τύπου.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">06</div>
+      <div class="service-icon">📐</div>
+      <div class="service-name">Αρχιτεκτονική & Μελέτη</div>
+      <div class="service-desc">Αρχιτεκτονικές μελέτες, στατικές μελέτες, αδειοδότηση και project management.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<div class="projects-bg" id="projects">
+  <div class="projects-inner">
+    <div class="sec-eyebrow">Portfolio</div>
+    <h2 class="sec-h">Τελευταία Έργα</h2>
+    <p class="sec-desc" style="color:var(--text);">Επιλογή από τα πιο πρόσφατα ολοκληρωμένα έργα μας</p>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="proj-img">
+          <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=80" alt="project" loading="lazy">
+        </div>
+        <div class="proj-overlay">
+          <span class="proj-tag">Πολυκατοικία</span>
+          <div class="proj-name">Residences Kalamaria</div>
+          <div class="proj-location">Καλαμαριά, Θεσσαλονίκη</div>
+        </div>
+        <span class="proj-year">2025</span>
+      </div>
+      <div class="project-card">
+        <div class="proj-img">
+          <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=600&q=80" alt="project" loading="lazy">
+        </div>
+        <div class="proj-overlay">
+          <span class="proj-tag">Εμπορικό Κέντρο</span>
+          <div class="proj-name">Mall Extension</div>
+          <div class="proj-location">Εύοσμος, Θεσσαλονίκη</div>
+        </div>
+        <span class="proj-year">2024</span>
+      </div>
+      <div class="project-card">
+        <div class="proj-img">
+          <img src="https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=600&q=80" alt="project" loading="lazy">
+        </div>
+        <div class="proj-overlay">
+          <span class="proj-tag">Γραφεία</span>
+          <div class="proj-name">Business Center Pylaia</div>
+          <div class="proj-location">Πυλαία, Θεσσαλονίκη</div>
+        </div>
+        <span class="proj-year">2024</span>
+      </div>
+      <div class="project-card">
+        <div class="proj-img">
+          <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80" alt="project" loading="lazy">
+        </div>
+        <div class="proj-overlay">
+          <span class="proj-tag">Βιομηχανικό</span>
+          <div class="proj-name">Logistics Hub</div>
+          <div class="proj-location">Θέρμη, Θεσσαλονίκη</div>
+        </div>
+        <span class="proj-year">2023</span>
+      </div>
+      <div class="project-card">
+        <div class="proj-img">
+          <img src="https://images.unsplash.com/photo-1590069261209-f8e9b8642343?w=600&q=80" alt="project" loading="lazy">
+        </div>
+        <div class="proj-overlay">
+          <span class="proj-tag">Κατοικία</span>
+          <div class="proj-name">Luxury Villa Panorama</div>
+          <div class="proj-location">Πανόραμα, Θεσσαλονίκη</div>
+        </div>
+        <span class="proj-year">2023</span>
+      </div>
+      <div class="project-card">
+        <div class="proj-img">
+          <img src="https://images.unsplash.com/photo-1513467535987-fd81bc7d62f8?w=600&q=80" alt="project" loading="lazy">
+        </div>
+        <div class="proj-overlay">
+          <span class="proj-tag">Ανακαίνιση</span>
+          <div class="proj-name">Heritage Hotel Restore</div>
+          <div class="proj-location">Κέντρο, Θεσσαλονίκη</div>
+        </div>
+        <span class="proj-year">2022</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TEAM -->
+<section id="team">
+  <div class="sec-eyebrow">Our People</div>
+  <h2 class="sec-h">Η Ομάδα μας</h2>
+  <p class="sec-desc">Έμπειροι επαγγελματίες αφοσιωμένοι στην ποιότητα</p>
+  <div class="team-grid">
+    <div class="team-card">
+      <div class="team-img"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80" alt="team" loading="lazy"></div>
+      <div class="team-body"><div class="team-name">Γιώργος Κατσαρός</div><div class="team-role">CEO & Ιδρυτής</div></div>
+    </div>
+    <div class="team-card">
+      <div class="team-img"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80" alt="team" loading="lazy"></div>
+      <div class="team-body"><div class="team-name">Παναγιώτης Δήμου</div><div class="team-role">Τεχνικός Διευθυντής</div></div>
+    </div>
+    <div class="team-card">
+      <div class="team-img"><img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&q=80" alt="team" loading="lazy"></div>
+      <div class="team-body"><div class="team-name">Ελένη Παυλίδου</div><div class="team-role">Αρχιτέκτων</div></div>
+    </div>
+    <div class="team-card">
+      <div class="team-img"><img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80" alt="team" loading="lazy"></div>
+      <div class="team-body"><div class="team-name">Νίκος Αντωνίου</div><div class="team-role">Project Manager</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<div class="quote-section" id="quote">
+  <div class="quote-inner">
+    <div class="sec-eyebrow">Free Quote</div>
+    <h2 class="sec-h">Ζητήστε Δωρεάν Προσφορά</h2>
+    <p style="color:var(--text);font-size:0.9rem;">Συμπληρώστε τη φόρμα και θα επικοινωνήσουμε εντός 24 ωρών.</p>
+    <div class="form-grid">
+      <div class="fg"><label>Όνομα *</label><input type="text" placeholder="Ονοματεπώνυμο"></div>
+      <div class="fg"><label>Τηλέφωνο *</label><input type="tel" placeholder="+30 6900 000000"></div>
+      <div class="fg"><label>Email *</label><input type="email" placeholder="email@example.com"></div>
+      <div class="fg"><label>Τύπος Έργου</label>
+        <select>
+          <option>Νέα Κατασκευή</option>
+          <option>Ανακαίνιση</option>
+          <option>Εμπορικό Έργο</option>
+          <option>Τεχνικές Εγκαταστάσεις</option>
+          <option>Εξωτερικοί Χώροι</option>
+          <option>Άλλο</option>
+        </select>
+      </div>
+      <div class="fg"><label>Προϋπολογισμός</label>
+        <select>
+          <option>έως 20.000€</option>
+          <option>20.000 – 50.000€</option>
+          <option>50.000 – 150.000€</option>
+          <option>150.000€+</option>
+        </select>
+      </div>
+      <div class="fg"><label>Χρόνος Έναρξης</label>
+        <select>
+          <option>Άμεσα</option>
+          <option>1-3 μήνες</option>
+          <option>3-6 μήνες</option>
+          <option>Μετά από 6 μήνες</option>
+        </select>
+      </div>
+      <div class="fg full-col"><label>Περιγραφή Έργου</label>
+        <textarea placeholder="Περιγράψτε το έργο σας — τοποθεσία, εμβαδόν, ειδικές απαιτήσεις..."></textarea>
+      </div>
+    </div>
+    <button class="quote-submit" onclick="alert('Ευχαριστούμε! Θα επικοινωνήσουμε μαζί σας εντός 24 ωρών με την προσφορά μας.')">Αποστολή Αιτήματος Προσφοράς →</button>
+  </div>
+</div>
+
+<!-- LOCATION -->
+<section id="location">
+  <div class="sec-eyebrow">Find Us</div>
+  <h2 class="sec-h">Εύρεση Γραφείου</h2>
+  <div class="loc-grid">
+    <div class="li">
+      <p><strong>BuildTech Constructions</strong></p>
+      <p>Βασιλέως Γεωργίου Β΄ 15</p>
+      <p>Θεσσαλονίκη 546 40</p><br>
+      <p><strong>Τηλ:</strong> +30 2310 666 777</p>
+      <p><strong>Κινητό:</strong> +30 697 000 1111</p>
+      <p><strong>Email:</strong> info@buildtech.gr</p><br>
+      <p><strong>Δευτ-Παρ:</strong> 08:30 – 17:30</p>
+      <p><strong>Σάββατο:</strong> 09:00 – 14:00</p>
+    </div>
+    <div class="map7">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3027!2d22.955!3d40.637!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14a838f41428e0ed%3A0x9bae715b8d574a9!2sThessaloniki!5e0!3m2!1sel!2sgr!4v1" allowfullscreen loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="fl">BUILDTECH</div>
+  <p>© 2026 BuildTech Constructions — Designed by ATC Digital Craft</p>
+</footer>
+</body>
+</html>
